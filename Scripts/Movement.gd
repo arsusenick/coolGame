@@ -12,7 +12,7 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")	
 	velocity = direction * speed * delta * 100
 	
 	var animState = "idle"

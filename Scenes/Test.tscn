@@ -390,15 +390,14 @@ height = 14.0
 [node name="Scene2D" type="Area2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(542, 312)
 script = ExtResource("1_ngnxc")
 
 [node name="Character" type="Sprite2D" parent="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(-460, -222)
 scale = Vector2(1.31, 1.31)
 texture = ExtResource("2_krlm4")
 hframes = 8
+frame = 2
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="CharacterBody2D/Character"]
 libraries = {
@@ -406,11 +405,10 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(-459.476, -221.738)
 scale = Vector2(0.131, 0.131)
 zoom = Vector2(3.88, 3.88)
 position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-460, -219)
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_wqk1e")
