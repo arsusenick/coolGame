@@ -3,6 +3,10 @@
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_ioihp"]
 [ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Sprites/Characters/Skeleton.png" id="2_irnmn"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdxr"]
+radius = 7.0
+height = 14.0
+
 [sub_resource type="Animation" id="Animation_bio3l"]
 resource_name = "idle"
 length = 0.75
