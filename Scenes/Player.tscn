@@ -1,8 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://bu172clhhjfrv"]
+[gd_scene load_steps=30 format=3 uid="uid://bu172clhhjfrv"]
 
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_ce4p8"]
 [ext_resource type="Texture2D" uid="uid://1nmtlk8i6nse" path="res://Sprites/Characters/Red mage.png" id="2_mptqa"]
-[ext_resource type="Texture2D" uid="uid://d3p2gqyqk1w4a" path="res://Sprites/[FULL]PistolV1.01.png" id="3_s188a"]
+[ext_resource type="Texture2D" uid="uid://d3p2gqyqk1w4a" path="res://Sprites/weapon/[FULL]PistolV1.01.png" id="3_rti6m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdxr"]
 radius = 7.0
@@ -405,51 +405,51 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uk61o"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(0, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcsj3"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(64, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvfja"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(128, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vl58j"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(192, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7ut0"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(256, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dikl"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(320, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6x4g"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(384, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1cep"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(448, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vaop4"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(512, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chsj5"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(576, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w0ydd"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(640, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34v58"]
-atlas = ExtResource("3_s188a")
+atlas = ExtResource("3_rti6m")
 region = Rect2(704, 0, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyq4l"]
@@ -496,6 +496,8 @@ animations = [{
 "speed": 40.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hre4j"]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -506,8 +508,8 @@ shape = SubResource("CapsuleShape2D_erdxr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1.19209e-07, -9.53674e-07)
-scale = Vector2(0.131, 0.131)
-zoom = Vector2(3.88, 3.88)
+scale = Vector2(0.130638, 0.131)
+zoom = Vector2(2.835, 2.835)
 position_smoothing_enabled = true
 
 [node name="Character" type="Sprite2D" parent="."]
@@ -530,5 +532,13 @@ wait_time = 0.3
 position = Vector2(11, 2)
 scale = Vector2(0.495748, 0.495748)
 sprite_frames = SubResource("SpriteFrames_lyq4l")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.93097, 1.28916)
+shape = SubResource("CircleShape2D_hre4j")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

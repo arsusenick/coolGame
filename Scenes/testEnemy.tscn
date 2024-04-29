@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dra5s2bkj410c"]
 
 [ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Sprites/Characters/Skeleton.png" id="1_23ihl"]
-[ext_resource type="Script" path="res://Scenes/testEnemy.gd" id="1_i86tx"]
+[ext_resource type="Script" path="res://Scripts/testEnemy.gd" id="1_i86tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bj26n"]
 size = Vector2(16, 14)
