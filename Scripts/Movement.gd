@@ -11,7 +11,7 @@ var animState = "idle"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	position = Vector2(200,150)
+	#position = Vector2(200,150)
 	can_shoot = true
 	speed = 50
 

@@ -1,15 +1,59 @@
-[gd_scene load_steps=15 format=3 uid="uid://shjqvn85bxuk"]
+[gd_scene load_steps=17 format=3 uid="uid://shjqvn85bxuk"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_ioihp"]
 [ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Sprites/Characters/Skeleton.png" id="2_irnmn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdxr"]
 radius = 7.0
-height = 14.0
+height = 20.2643
+
+[sub_resource type="Animation" id="Animation_8jbym"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mhke2"]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1.25, 0.25, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1.25, 0.25, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 1.5708]
+}
 
 [sub_resource type="Animation" id="Animation_bio3l"]
 resource_name = "idle"
-length = 0.75
+length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,15 +85,27 @@ tracks/2/path = NodePath(".:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 0.37), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1.31, 1.31), Vector2(1.4, 1.25), Vector2(1.31, 1.31)]
 }
 
 [sub_resource type="Animation" id="Animation_pevqw"]
 resource_name = "walk_down"
-length = 0.75
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -90,7 +146,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_llp2b"]
 resource_name = "walk_left"
-length = 0.75
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -131,7 +187,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_3obvs"]
 resource_name = "walk_left_down"
-length = 0.75
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -172,7 +228,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rcu74"]
 resource_name = "walk_left_up"
-length = 0.75
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -213,7 +269,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_8njwu"]
 resource_name = "walk_right"
-length = 0.75
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -254,7 +310,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_4bu6r"]
 resource_name = "walk_right_down"
-length = 0.75
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -295,7 +351,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_lyvxf"]
 resource_name = "walk_right_up"
-length = 0.75
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -336,7 +392,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_nynem"]
 resource_name = "walk_up"
-length = 0.75
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -377,6 +433,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg0vs"]
 _data = {
+"RESET": SubResource("Animation_8jbym"),
+"death": SubResource("Animation_mhke2"),
 "idle": SubResource("Animation_bio3l"),
 "walk_down": SubResource("Animation_pevqw"),
 "walk_left": SubResource("Animation_llp2b"),
@@ -396,16 +454,17 @@ collision_mask = 4
 script = ExtResource("1_ioihp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+top_level = true
+position = Vector2(9.53674e-07, 0)
 scale = Vector2(1.10978, 0.986959)
 shape = SubResource("CapsuleShape2D_erdxr")
 
 [node name="Character" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(3.55271e-15, -4)
-scale = Vector2(1.31, 1.31)
+scale = Vector2(1.34176, 1.28883)
 texture = ExtResource("2_irnmn")
 hframes = 8
-frame = 5
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="Character"]
 libraries = {

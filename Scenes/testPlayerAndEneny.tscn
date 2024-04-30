@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dtjumqepv6g7h" path="res://Sprites/Environment/Asphalt.png" id="1_syx40"]
 [ext_resource type="Texture2D" uid="uid://b5n3vdkd7xyv2" path="res://Sprites/Environment/Dirt.png" id="2_7lf0o"]
-[ext_resource type="Texture2D" uid="uid://fpemji1v1n8l" path="res://Sprites/Environment/Roof.png" id="3_jwjcy"]
+[ext_resource type="Texture2D" uid="uid://c7kj3lqq6fl01" path="res://Sprites/Environment/Roof.png" id="3_jwjcy"]
 [ext_resource type="Texture2D" uid="uid://bk36ngfm7fykh" path="res://Sprites/Environment/Wall.png" id="4_62aw1"]
 [ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/Player.tscn" id="5_m24pm"]
 [ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Scenes/Enemy.tscn" id="6_fu46t"]
