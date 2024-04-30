@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2u68jfeuexst"]
+[gd_scene load_steps=14 format=3 uid="uid://dra5s2bkj410c"]
 
-[ext_resource type="Texture2D" uid="uid://1nmtlk8i6nse" path="res://Sprites/Characters/Red mage.png" id="1_hase4"]
+[ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Sprites/Characters/Skeleton.png" id="1_23ihl"]
+[ext_resource type="Script" path="res://Scripts/testEnemy.gd" id="1_i86tx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bj26n"]
+size = Vector2(16, 14)
 
 [sub_resource type="Animation" id="Animation_bio3l"]
 resource_name = "idle"
+length = 0.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -43,7 +48,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_pevqw"]
 resource_name = "walk_down"
-length = 0.6
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -84,7 +89,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_llp2b"]
 resource_name = "walk_left"
-length = 0.6
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -125,7 +130,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_3obvs"]
 resource_name = "walk_left_down"
-length = 0.6
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -166,7 +171,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rcu74"]
 resource_name = "walk_left_up"
-length = 0.6
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -207,7 +212,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_8njwu"]
 resource_name = "walk_right"
-length = 0.6
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -248,7 +253,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_4bu6r"]
 resource_name = "walk_right_down"
-length = 0.6
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -289,7 +294,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_lyvxf"]
 resource_name = "walk_right_up"
-length = 0.6
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -330,7 +335,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_nynem"]
 resource_name = "walk_up"
-length = 0.6
+length = 0.75
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -382,16 +387,35 @@ _data = {
 "walk_up": SubResource("Animation_nynem")
 }
 
-[node name="Character" type="Sprite2D"]
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(0, 2)
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_i86tx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bj26n")
+
+[node name="Character" type="Sprite2D" parent="."]
+modulate = Color(0, 0.564706, 1, 1)
 texture_filter = 1
-position = Vector2(27, -24)
-texture = ExtResource("1_hase4")
+position = Vector2(3.55271e-15, -4)
+scale = Vector2(1.31, 1.31)
+texture = ExtResource("1_23ihl")
 hframes = 8
-frame = 3
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+[node name="PlayerAnimation" type="AnimationPlayer" parent="Character"]
 libraries = {
 "": SubResource("AnimationLibrary_lg0vs")
 }
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.151
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

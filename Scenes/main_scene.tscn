@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bk36ngfm7fykh" path="res://Sprites/Environment/Wall.png" id="4_gvy6v"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_vby8s"]
 [ext_resource type="Script" path="res://Scripts/Util.gd" id="6_0o1yc"]
-[ext_resource type="PackedScene" uid="uid://bjkmvgitqs45m" path="res://Scenes/Test.tscn" id="8_s5qnh"]
+[ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/Player.tscn" id="7_iu8tc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmjll"]
 texture = ExtResource("1_ajqvd")
@@ -133,6 +133,8 @@ script = ExtResource("6_0o1yc")
 offset_right = 8.0
 offset_bottom = 8.0
 
-[node name="Scene2D" parent="." instance=ExtResource("8_s5qnh")]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CharacterBody2D" parent="Node2D" instance=ExtResource("7_iu8tc")]
 
 [connection signal="pressed" from="Button" to="TileMap" method="_on_button_pressed"]
