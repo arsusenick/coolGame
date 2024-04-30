@@ -156,8 +156,7 @@ position = Vector2(385, 33)
 [node name="Enemy3" parent="Enemy" instance=ExtResource("6_fu46t")]
 position = Vector2(495, 204)
 
-[node name="Enemy4" parent="Enemy" node_paths=PackedStringArray("nav_agent") instance=ExtResource("6_fu46t")]
+[node name="Enemy4" parent="Enemy" instance=ExtResource("6_fu46t")]
 position = Vector2(504, 141)
-nav_agent = NodePath("../Enemy/Navigation/NavigationAgent2D")
 
 [connection signal="shoot" from="Player/Player" to="BulletManager" method="_on_player_shoot"]
