@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=31 format=3 uid="uid://bu172clhhjfrv"]
 
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_ce4p8"]
@@ -8,6 +9,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdxr"]
 radius = 7.0
 height = 20.0
+
 
 [sub_resource type="Animation" id="Animation_ahva6"]
 length = 0.001
@@ -23,6 +25,7 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+
 
 [sub_resource type="Animation" id="Animation_btk2q"]
 resource_name = "dodge"
@@ -70,6 +73,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/use_blend = true
+
 
 [sub_resource type="Animation" id="Animation_bio3l"]
 resource_name = "idle"
@@ -441,7 +445,9 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg0vs"]
 _data = {
 "RESET": SubResource("Animation_ahva6"),
+
 "dodge": SubResource("Animation_btk2q"),
+
 "idle": SubResource("Animation_bio3l"),
 "walk_down": SubResource("Animation_pevqw"),
 "walk_left": SubResource("Animation_llp2b"),
@@ -454,6 +460,7 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uk61o"]
+
 atlas = ExtResource("3_s188a")
 region = Rect2(0, 0, 64, 32)
 
@@ -499,6 +506,7 @@ region = Rect2(640, 0, 64, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34v58"]
 atlas = ExtResource("3_s188a")
+
 region = Rect2(704, 0, 64, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lyq4l"]
@@ -545,28 +553,36 @@ animations = [{
 "speed": 40.0
 }]
 
+
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_ce4p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 top_level = true
+
 shape = SubResource("CapsuleShape2D_erdxr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1.19209e-07, -9.53674e-07)
+
 scale = Vector2(0.131, 0.131)
 zoom = Vector2(3.88, 3.88)
+
 position_smoothing_enabled = true
 
 [node name="Character" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-7.62939e-06, -1.90735e-06)
-rotation = 0.0424372
+
 scale = Vector2(1.31, 1.31)
 texture = ExtResource("2_mptqa")
 hframes = 8
+frame = 1
+
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="Character"]
 libraries = {
@@ -581,6 +597,15 @@ position = Vector2(11, 2)
 scale = Vector2(0.495748, 0.495748)
 sprite_frames = SubResource("SpriteFrames_lyq4l")
 
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.93097, 1.28916)
+shape = SubResource("CircleShape2D_hre4j")
+
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

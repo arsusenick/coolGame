@@ -1,7 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://shjqvn85bxuk"]
+
+[gd_scene load_steps=15 format=3 uid="uid://shjqvn85bxuk"]
+
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_ioihp"]
 [ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Sprites/Characters/Skeleton.png" id="2_irnmn"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdxr"]
 radius = 7.0
@@ -54,6 +57,7 @@ tracks/1/keys = {
 resource_name = "idle"
 length = 2.0
 loop_mode = 1
+
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,6 +89,7 @@ tracks/2/path = NodePath(".:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+
 "times": PackedFloat32Array(0, 1, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -101,11 +106,13 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1.31, 1.31), Vector2(1.4, 1.25), Vector2(1.31, 1.31)]
-}
+
 
 [sub_resource type="Animation" id="Animation_pevqw"]
 resource_name = "walk_down"
+
 length = 0.6
+
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -146,7 +153,10 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_llp2b"]
 resource_name = "walk_left"
+
 length = 0.6
+
+
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -187,7 +197,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_3obvs"]
 resource_name = "walk_left_down"
+
 length = 0.6
+
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -228,7 +240,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_rcu74"]
 resource_name = "walk_left_up"
+
 length = 0.6
+
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -269,7 +283,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_8njwu"]
 resource_name = "walk_right"
+
 length = 0.6
+
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -310,7 +326,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_4bu6r"]
 resource_name = "walk_right_down"
+
 length = 0.6
+
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -351,7 +369,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_lyvxf"]
 resource_name = "walk_right_up"
+
 length = 0.6
+
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -392,7 +412,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_nynem"]
 resource_name = "walk_up"
+
 length = 0.6
+
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -433,6 +455,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg0vs"]
 _data = {
+
 "RESET": SubResource("Animation_8jbym"),
 "death": SubResource("Animation_mhke2"),
 "idle": SubResource("Animation_bio3l"),
@@ -445,6 +468,7 @@ _data = {
 "walk_right_up": SubResource("Animation_lyvxf"),
 "walk_up": SubResource("Animation_nynem")
 }
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fsmjp"]
 
@@ -463,6 +487,7 @@ shape = SubResource("CapsuleShape2D_erdxr")
 [node name="Character" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.34176, 1.28883)
+
 texture = ExtResource("2_irnmn")
 hframes = 8
 
@@ -471,14 +496,44 @@ libraries = {
 "": SubResource("AnimationLibrary_lg0vs")
 }
 
-[node name="Detector" type="Area2D" parent="."]
-collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.84044, 0.84044)
+shape = SubResource("CircleShape2D_savth")
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+debug_enabled = true
+
+[node name="RecalculateTimer" type="Timer" parent="Navigation"]
+wait_time = 0.1
+autostart = true
+
+[node name="Aggr" type="Node2D" parent="."]
+
+[node name="AggroRange" type="Area2D" parent="Aggr"]
+collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggr/AggroRange"]
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_fsmjp")
 debug_color = Color(0.515007, 0.562046, 0.365721, 0.42)
 
-[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
-[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
+
+[node name="DeAggr" type="Node2D" parent="."]
+visible = false
+
+[node name="AggroRange" type="Area2D" parent="DeAggr"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeAggr/AggroRange"]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_fsmjp")
+debug_color = Color(0.86948, 0.312565, 0.424489, 0.42)
+
+[connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
+[connection signal="area_entered" from="Aggr/AggroRange" to="." method="_on_aggro_range_area_entered"]
+[connection signal="area_exited" from="DeAggr/AggroRange" to="." method="_on_aggro_range_area_exited"]
