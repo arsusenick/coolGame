@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7kj3lqq6fl01"
-path="res://.godot/imported/Roof.png-93aa7a1b3adc71d90027e9495df4e294.ctex"
+uid="uid://d3p2gqyqk1w4a"
+path="res://.godot/imported/[FULL]PistolV1.01.png-af514253ced201572db4e0b8737b08e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Environment/Roof.png"
-dest_files=["res://.godot/imported/Roof.png-93aa7a1b3adc71d90027e9495df4e294.ctex"]
+source_file="res://Sprites/[FULL]PistolV1.01.png"
+dest_files=["res://.godot/imported/[FULL]PistolV1.01.png-af514253ced201572db4e0b8737b08e8.ctex"]
 
 [params]
 

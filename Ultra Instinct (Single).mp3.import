@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://n7cprgrg2fdj"
+path="res://.godot/imported/Ultra Instinct (Single).mp3-59ce3e9182fb0b91856fb61e713154fb.mp3str"
+
+[deps]
+
+source_file="res://Ultra Instinct (Single).mp3"
+dest_files=["res://.godot/imported/Ultra Instinct (Single).mp3-59ce3e9182fb0b91856fb61e713154fb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

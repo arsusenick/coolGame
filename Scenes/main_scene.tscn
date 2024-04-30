@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dtjumqepv6g7h" path="res://Sprites/Environment/Asphalt.png" id="1_ajqvd"]
 [ext_resource type="Texture2D" uid="uid://b5n3vdkd7xyv2" path="res://Sprites/Environment/Dirt.png" id="2_wl8il"]
-[ext_resource type="Texture2D" uid="uid://fpemji1v1n8l" path="res://Sprites/Environment/Roof.png" id="3_ocrkn"]
 [ext_resource type="Texture2D" uid="uid://bk36ngfm7fykh" path="res://Sprites/Environment/Wall.png" id="4_gvy6v"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_vby8s"]
 [ext_resource type="Script" path="res://Scripts/Util.gd" id="6_0o1yc"]
@@ -69,8 +68,11 @@ texture = ExtResource("2_wl8il")
 2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:2/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ws1hb"]
+load_path = "res://.godot/imported/Roof.png-93aa7a1b3adc71d90027e9495df4e294.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spjrf"]
-texture = ExtResource("3_ocrkn")
+texture = SubResource("CompressedTexture2D_ws1hb")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
