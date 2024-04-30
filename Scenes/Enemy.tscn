@@ -390,8 +390,6 @@ radius = 6.06709
 [sub_resource type="CircleShape2D" id="CircleShape2D_fsmjp"]
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
-collision_layer = 4
-collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ioihp")
@@ -424,10 +422,9 @@ wait_time = 0.1
 autostart = true
 
 [node name="Aggr" type="Node2D" parent="."]
-visible = false
 
 [node name="AggroRange" type="Area2D" parent="Aggr"]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aggr/AggroRange"]
@@ -439,7 +436,7 @@ debug_color = Color(0.515007, 0.562046, 0.365721, 0.42)
 visible = false
 
 [node name="AggroRange" type="Area2D" parent="DeAggr"]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeAggr/AggroRange"]
