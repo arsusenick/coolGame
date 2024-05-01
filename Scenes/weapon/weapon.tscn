@@ -8,9 +8,10 @@
 script = ExtResource("1_sg688")
 metadata/_edit_horizontal_guides_ = [-82.0]
 
-[node name="Node2D" type="Node2D" parent="."]
-scale = Vector2(2.62734, 2.62734)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.62734, 2.62734)
 shape = SubResource("RectangleShape2D_sw1ur")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
