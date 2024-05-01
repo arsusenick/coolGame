@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="SWMG Project"
-run/main_scene="res://Scenes/testPlayerAndEneny.tscn"
+run/main_scene="res://Scenes/maps/TestMap.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=2400
-window/size/viewport_height=900
+window/size/viewport_width=1235
+window/size/viewport_height=735
 
 [dotnet]
 
@@ -53,6 +53,7 @@ down={
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="bullet"
+2d_physics/layer_5="death"
 
 [rendering]
 

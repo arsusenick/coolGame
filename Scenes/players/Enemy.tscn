@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_mhke2"]
 resource_name = "death"
@@ -47,6 +59,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1.25, 0.25, 1),
 "update": 0,
 "values": [0.0, -0.0872665, 1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.419813, 0.419813, 0.419813, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_bio3l"]
@@ -449,7 +473,7 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ioihp")
@@ -462,7 +486,7 @@ shape = SubResource("CircleShape2D_savth")
 
 [node name="Character" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1.34176, 1.28883)
+scale = Vector2(1.31, 1.31)
 texture = ExtResource("2_irnmn")
 hframes = 8
 
@@ -491,18 +515,6 @@ scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_fsmjp")
 debug_color = Color(0.515007, 0.562046, 0.365721, 0.42)
 
-[node name="DeAggr" type="Node2D" parent="."]
-visible = false
-
-[node name="DeAggroRange" type="Area2D" parent="DeAggr"]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeAggr/DeAggroRange"]
-scale = Vector2(15, 15)
-shape = SubResource("CircleShape2D_fsmjp")
-debug_color = Color(0.86948, 0.312565, 0.424489, 0.42)
-
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
 [connection signal="area_entered" from="Aggr/AggroRange" to="." method="_on_aggro_range_area_entered"]
-[connection signal="area_exited" from="DeAggr/DeAggroRange" to="." method="_on_aggro_range_area_exited"]
+[connection signal="area_exited" from="Aggr/AggroRange" to="." method="_on_aggro_range_area_exited"]

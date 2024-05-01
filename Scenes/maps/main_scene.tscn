@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bk36ngfm7fykh" path="res://Sprites/Environment/Wall.png" id="4_gvy6v"]
 [ext_resource type="Script" path="res://Scripts/TileMap.gd" id="5_vby8s"]
 [ext_resource type="Script" path="res://Scripts/Util.gd" id="6_0o1yc"]
-[ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/Player.tscn" id="7_iu8tc"]
+[ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/players/Player.tscn" id="7_iu8tc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hmjll"]
 texture = ExtResource("1_ajqvd")

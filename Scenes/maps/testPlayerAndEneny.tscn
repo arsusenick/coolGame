@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://bqvar3fq8ju47"]
 
-[ext_resource type="Texture2D" uid="uid://dtjumqepv6g7h" path="res://Sprites/Environment/Asphalt.png" id="1_syx40"]
-[ext_resource type="Texture2D" uid="uid://b5n3vdkd7xyv2" path="res://Sprites/Environment/Dirt.png" id="2_7lf0o"]
-[ext_resource type="Texture2D" uid="uid://c7kj3lqq6fl01" path="res://Sprites/Environment/Roof.png" id="3_jwjcy"]
-[ext_resource type="Texture2D" uid="uid://bk36ngfm7fykh" path="res://Sprites/Environment/Wall.png" id="4_62aw1"]
-[ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/Player.tscn" id="5_m24pm"]
-[ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Scenes/Enemy.tscn" id="6_fu46t"]
-[ext_resource type="Script" path="res://Scripts/BulletManager.gd" id="6_kg7e2"]
-[ext_resource type="PackedScene" uid="uid://bf0o8jgso6i8o" path="res://Scenes/bullet.tscn" id="7_472a4"]
+[ext_resource type="Texture2D" uid="uid://dtjumqepv6g7h" path="res://Sprites/Environment/Asphalt.png" id="1_5esrl"]
+[ext_resource type="Texture2D" uid="uid://b5n3vdkd7xyv2" path="res://Sprites/Environment/Dirt.png" id="2_x5vc7"]
+[ext_resource type="Texture2D" uid="uid://c7kj3lqq6fl01" path="res://Sprites/Environment/Roof.png" id="3_1fmjd"]
+[ext_resource type="Texture2D" uid="uid://bk36ngfm7fykh" path="res://Sprites/Environment/Wall.png" id="4_h58bl"]
+[ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/players/Player.tscn" id="5_jl0ld"]
+[ext_resource type="Script" path="res://Scripts/BulletManager.gd" id="6_04q78"]
+[ext_resource type="PackedScene" uid="uid://bf0o8jgso6i8o" path="res://Scenes/weapon/bullet.tscn" id="7_dq0cu"]
+[ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Scenes/players/Enemy.tscn" id="8_etok5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ldsgu"]
 vertices = PackedVector2Array(555, 21, 555, 251, 373, 213, 373, 155, 341, 155, 341, 85, 373, 85, 373, 27, 21, 21, 283, 27, 21, 251, 283, 85, 315, 85, 315, 155, 283, 155, 283, 213, 315, 213, 315, 229, 341, 229, 341, 213)
@@ -17,7 +17,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 5.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gl6ul"]
-texture = ExtResource("1_syx40")
+texture = ExtResource("1_5esrl")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -47,7 +47,7 @@ texture = ExtResource("1_syx40")
 2:2/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_34v48"]
-texture = ExtResource("2_7lf0o")
+texture = ExtResource("2_x5vc7")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -78,7 +78,7 @@ texture = ExtResource("2_7lf0o")
 2:2/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfqmy"]
-texture = ExtResource("3_jwjcy")
+texture = ExtResource("3_1fmjd")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -93,7 +93,7 @@ texture = ExtResource("3_jwjcy")
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_prd4j"]
-texture = ExtResource("4_62aw1")
+texture = ExtResource("4_h58bl")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -138,25 +138,25 @@ layer_0/tile_data = PackedInt32Array(65537, 65536, 1, 131073, 65536, 1, 196609, 
 
 [node name="Player" type="Node2D" parent="."]
 
-[node name="Player" parent="Player" instance=ExtResource("5_m24pm")]
+[node name="Player" parent="Player" instance=ExtResource("5_jl0ld")]
 position = Vector2(139, 121)
 
 [node name="BulletManager" type="Node2D" parent="."]
-script = ExtResource("6_kg7e2")
-bullet_scene = ExtResource("7_472a4")
+script = ExtResource("6_04q78")
+bullet_scene = ExtResource("7_dq0cu")
 
 [node name="Enemy" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Enemy" instance=ExtResource("6_fu46t")]
+[node name="Enemy" parent="Enemy" instance=ExtResource("8_etok5")]
 position = Vector2(306, 244)
 
-[node name="Enemy2" parent="Enemy" instance=ExtResource("6_fu46t")]
+[node name="Enemy2" parent="Enemy" instance=ExtResource("8_etok5")]
 position = Vector2(385, 33)
 
-[node name="Enemy3" parent="Enemy" instance=ExtResource("6_fu46t")]
+[node name="Enemy3" parent="Enemy" instance=ExtResource("8_etok5")]
 position = Vector2(495, 204)
 
-[node name="Enemy4" parent="Enemy" instance=ExtResource("6_fu46t")]
+[node name="Enemy4" parent="Enemy" instance=ExtResource("8_etok5")]
 position = Vector2(504, 141)
 
 [connection signal="shoot" from="Player/Player" to="BulletManager" method="_on_player_shoot"]

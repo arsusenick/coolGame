@@ -5,6 +5,7 @@ signal shoot
 @export var speed = 50
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
 @export var can_shoot: bool
+@export var cameraZoom = 2.3
 
 var screen_size: Vector2
 var animState = "idle"
@@ -16,6 +17,7 @@ func _ready():
 	speed = 50
 
 func get_input(anima):
+	$Camera2D.zoom = Vector2(cameraZoom, cameraZoom)
 	var input_dir = Input.get_vector("left","right","up","down")
 	#print(input_dir)
 	velocity = input_dir.normalized() * speed
@@ -26,7 +28,8 @@ func get_input(anima):
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
 		var dir = get_global_mouse_position() - position
-		shoot.emit(position, dir)
+		var damage = 10
+		shoot.emit(position, dir, damage)
 		can_shoot = false
 		$AnimatedSprite2D.play()
 		$ShootTimer.start()
@@ -90,3 +93,8 @@ func play_anim(direction: Vector2):
 func _on_shoot_timer_timeout():
 	$AnimatedSprite2D.stop()
 	can_shoot = true # Replace with function body.
+
+
+func jopa (str:String):
+	pass
+
