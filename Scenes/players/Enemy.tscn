@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://shjqvn85bxuk"]
+[gd_scene load_steps=18 format=3 uid="uid://shjqvn85bxuk"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_ioihp"]
 [ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Sprites/Characters/Skeleton.png" id="2_irnmn"]
@@ -471,6 +471,9 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fsmjp"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_258b5"]
+font_size = 12
+
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 collision_layer = 4
 collision_mask = 3
@@ -514,6 +517,13 @@ collision_mask = 2
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_fsmjp")
 debug_color = Color(0.515007, 0.562046, 0.365721, 0.42)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -30.0
+offset_right = 20.0
+offset_bottom = -7.0
+label_settings = SubResource("LabelSettings_258b5")
 
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
 [connection signal="area_entered" from="Aggr/AggroRange" to="." method="_on_aggro_range_area_entered"]

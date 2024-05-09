@@ -7,3 +7,5 @@
 script = ExtResource("2_lt53i")
 attackSpeed = 0
 accuracy = 0
+weaponType = "basic_weapon"
+weaponName = ""

@@ -4,18 +4,27 @@ signal shoot
 
 @export var speed = 50
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
-@export var can_shoot: bool
+@export var can_shoot: bool = false
+var gunName: String = ""
 @export var cameraZoom = 2.3
+var damage = 0
+
 
 var screen_size: Vector2
 var animState = "idle"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	#position = Vector2(200,150)
+	position = Vector2(200,150)
 	can_shoot = true
 	speed = 50
 
+func get_weapon_stats(gunDamage: int):
+	damage = gunDamage
+	can_shoot = true
+	
 func get_input(anima):
 	$Camera2D.zoom = Vector2(cameraZoom, cameraZoom)
 	var input_dir = Input.get_vector("left","right","up","down")
@@ -28,21 +37,16 @@ func get_input(anima):
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
 		var dir = get_global_mouse_position() - position
-		var damage = 10
 		shoot.emit(position, dir, damage)
 		can_shoot = false
-		$AnimatedSprite2D.play()
+
 		$ShootTimer.start()
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
 func _physics_process(delta):
-	
 	move_and_slide()
-
-	position = position.clamp(Vector2.ZERO, screen_size)
-	
 	var mouse = get_local_mouse_position()
 	var angle = snappedf(mouse.angle(), PI/4) / (PI/4)
 	angle = wrapi(int(angle), 0, 8)
@@ -91,10 +95,5 @@ func play_anim(direction: Vector2):
 
 
 func _on_shoot_timer_timeout():
-	$AnimatedSprite2D.stop()
 	can_shoot = true # Replace with function body.
-
-
-func jopa (str:String):
-	pass
 

@@ -11,6 +11,7 @@ var alive = true
 var animState = "idle"
 var target_node = null
 func _ready():
+	$Label.set_text(str(health))
 	nav_agent.path_desired_distance = 4
 	nav_agent.target_desired_distance = 4
 
@@ -69,6 +70,7 @@ func _physics_process(delta):
 func get_damage(damage: int):
 	print(str(health) + " " + str(damage) + " hit!")
 	health = health - damage
+	$Label.set_text(str(health))
 	if health <= 0 and alive:
 		death()
 

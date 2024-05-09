@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dedsdvef7kvfj"]
+[gd_scene load_steps=11 format=3 uid="uid://dedsdvef7kvfj"]
 
 [ext_resource type="Texture2D" uid="uid://bded2na08sjr7" path="res://Sprites/Environment/Ghetto.png" id="1_80tt3"]
 [ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/players/Player.tscn" id="2_qaico"]
 [ext_resource type="Script" path="res://Scripts/BulletManager.gd" id="3_cfel0"]
 [ext_resource type="PackedScene" uid="uid://bf0o8jgso6i8o" path="res://Scenes/weapon/bullet.tscn" id="4_d2ryl"]
 [ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Scenes/players/Enemy.tscn" id="5_wjnvl"]
+[ext_resource type="PackedScene" uid="uid://pdunxfv75djd" path="res://Scenes/weapon/BasicWeapon/pistol.tscn" id="6_x8pjp"]
+[ext_resource type="Script" path="res://Scenes/maps/WeaponManager.gd" id="7_v8yof"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bjq5b"]
 vertices = PackedVector2Array(134, 230, 10, 230, 11, 9, 134, 54, 438, 9, 438, 54, 1347, 807, 8, 824, 9, 650, 362, 650, 362, 506, 518, 506, 518, 618, 826, 618, 826, 474, 982, 474, 982, 490, 998, 490, 998, 506, 1014, 506, 1014, 522, 1030, 522, 1030, 538, 1046, 538, 1046, 554, 1062, 554, 1062, 570, 1178, 570, 1178, 554, 1194, 554, 1194, 538, 1210, 538, 1210, 522, 1226, 522, 1226, 506, 1242, 506, 1242, 490, 1258, 490, 1258, 326, 1242, 326, 1242, 310, 1342, 9, 1226, 310, 1226, 294, 1210, 294, 1210, 278, 1194, 278, 1194, 262, 1178, 262, 1178, 246, 1062, 246, 1062, 262, 1046, 262, 890, 250, 1046, 278, 1030, 278, 1030, 294, 1014, 294, 1014, 310, 998, 310, 998, 326, 982, 326, 826, 278, 982, 342, 826, 342, 518, 278, 518, 374, 362, 374, 362, 230, 438, 250, 218, 230, 218, 186, 438, 186, 890, 9, 326, 614, 26, 614, 154, 570, 198, 570, 70, 570, 326, 470, 282, 570, 282, 486, 26, 314, 70, 486, 326, 314, 326, 458, 282, 442, 282, 358, 182, 314, 198, 358, 854, 74, 854, 214, 474, 214, 474, 150, 154, 442, 198, 442, 154, 486, 154, 358, 170, 314, 554, 458, 554, 362, 790, 362, 790, 426, 1018, 454, 1002, 426, 1002, 410, 1018, 410, 1034, 470, 1018, 394, 1034, 394, 1050, 486, 1034, 378, 1050, 378, 1050, 362, 1066, 362, 1066, 346, 1082, 346, 1082, 330, 1158, 330, 1158, 346, 1174, 346, 1174, 362, 1190, 362, 1190, 378, 1206, 378, 1206, 394, 1222, 394, 1222, 470, 1206, 470, 1206, 486, 1190, 486, 1190, 502, 1174, 502, 1174, 518, 1158, 518, 1158, 534, 1082, 534, 1082, 518, 1066, 518, 1066, 502, 1050, 502, 1034, 486, 1018, 470, 1002, 454, 1002, 438, 790, 438, 790, 582, 554, 582, 554, 470, 474, 138, 474, 74, 182, 150, 170, 138, 70, 358, 70, 442, 198, 486)
@@ -262,16 +264,31 @@ layer_2/tile_data = PackedInt32Array(-2949165, 393218, 9, -2883629, 393218, 9, -
 
 [node name="Player" parent="." instance=ExtResource("2_qaico")]
 z_index = 100
-position = Vector2(603, 552)
-cameraZoom = 9.165
+position = Vector2(608, 546)
+can_shoot = false
+cameraZoom = 2.71
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("3_cfel0")
 bullet_scene = ExtResource("4_d2ryl")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="EMENEM" type="Node2D" parent="."]
 
-[node name="Enemy4" parent="Node2D" instance=ExtResource("5_wjnvl")]
+[node name="Enemy4" parent="EMENEM" instance=ExtResource("5_wjnvl")]
 position = Vector2(786, 574)
+speed = 0
 
+[node name="Enemy5" parent="EMENEM" instance=ExtResource("5_wjnvl")]
+position = Vector2(724, 574)
+speed = 0
+
+[node name="Enemy6" parent="EMENEM" instance=ExtResource("5_wjnvl")]
+position = Vector2(668, 574)
+speed = 0
+
+[node name="WeaponManager" type="Node2D" parent="."]
+script = ExtResource("7_v8yof")
+weapons = Array[PackedScene]([ExtResource("6_x8pjp")])
+
+[connection signal="pickUp" from="Player" to="WeaponManager" method="_on_player_pick_up"]
 [connection signal="shoot" from="Player" to="BulletManager" method="_on_player_shoot"]
