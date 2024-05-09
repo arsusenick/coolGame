@@ -5,7 +5,7 @@ signal shoot
 @export var speed = 50
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
 @export var can_shoot: bool
-@export var cameraZoom = 2.3
+@export var cameraZoom: float
 
 var screen_size: Vector2
 var animState = "idle"
