@@ -3,10 +3,12 @@ extends Area2D
 @export var damage: int
 @export var projectile_speed: int
 @export var projectile: PackedScene
+var animState = "stop"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$weapon/button_sprite/button.play(animState)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,4 +20,16 @@ func showStats():
 
 
 func _on_body_entered(body):
-	pass # Replace with function body.
+	if body.name == "Player":
+		animState = "button"
+		$weapon/button_sprite/button.play(animState)
+
+
+func _on_body_exited(body):
+	if body.name == "Player":
+		animState = "stop"
+		$weapon/button_sprite/button.play(animState)
+
+func getDamage():
+	return damage
+
