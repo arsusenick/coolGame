@@ -268,8 +268,14 @@ layer_3/tile_data = PackedInt32Array(458789, 393218, 9, 524325, 393218, 9, 58986
 [node name="Player" parent="." instance=ExtResource("2_qaico")]
 z_index = 100
 position = Vector2(608, 546)
+speed = 100
 can_shoot = false
-cameraZoom = 2.71
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1.19209e-07, -9.53674e-07)
+scale = Vector2(0.131, 0.131)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("3_cfel0")

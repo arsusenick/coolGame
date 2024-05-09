@@ -6,7 +6,6 @@ signal shoot
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
 @export var can_shoot: bool = false
 var gunName: String = ""
-@export var cameraZoom: float
 var damage = 0
 
 
@@ -26,7 +25,6 @@ func get_weapon_stats(gunDamage: int):
 	can_shoot = true
 	
 func get_input(anima):
-	$Camera2D.zoom = Vector2(cameraZoom, cameraZoom)
 	var input_dir = Input.get_vector("left","right","up","down")
 	#print(input_dir)
 	velocity = input_dir.normalized() * speed
