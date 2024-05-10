@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bu172clhhjfrv"]
+[gd_scene load_steps=21 format=3 uid="uid://bu172clhhjfrv"]
 
-[ext_resource type="Script" path="res://Scenes/players/Stats.tres.gd" id="1_7esyr"]
+[ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_ebj8t"]
 [ext_resource type="Texture2D" uid="uid://1nmtlk8i6nse" path="res://Sprites/Characters/Red mage.png" id="2_mptqa"]
 [ext_resource type="AudioStream" uid="uid://n7cprgrg2fdj" path="res://Ultra Instinct (Single).mp3" id="3_s3hpy"]
 [ext_resource type="Texture2D" uid="uid://1wpv4t78f16l" path="res://Sprites/Hands.png" id="4_uqh1q"]
+[ext_resource type="Script" path="res://Scenes/players/Stats.gd" id="5_e5na2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdxr"]
 radius = 7.0
@@ -730,8 +731,7 @@ radius = 14.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 35
-script = ExtResource("1_7esyr")
-can_shoot = true
+script = ExtResource("1_ebj8t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -779,6 +779,9 @@ visible = false
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_rx7k8")
 debug_color = Color(0.883355, 0.000325556, 0.813666, 0.42)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("5_e5na2")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

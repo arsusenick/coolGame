@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dedsdvef7kvfj"]
+[gd_scene load_steps=14 format=3 uid="uid://dedsdvef7kvfj"]
 
 [ext_resource type="Texture2D" uid="uid://bded2na08sjr7" path="res://Sprites/Environment/Ghetto.png" id="1_80tt3"]
 [ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/players/Player.tscn" id="2_qaico"]
 [ext_resource type="Script" path="res://Scripts/BulletManager.gd" id="3_cfel0"]
-[ext_resource type="PackedScene" uid="uid://bf0o8jgso6i8o" path="res://Scenes/weapon/bullet.tscn" id="4_d2ryl"]
 [ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Scenes/players/Enemy.tscn" id="5_wjnvl"]
 [ext_resource type="PackedScene" uid="uid://pdunxfv75djd" path="res://Scenes/weapon/BasicWeapon/pistol.tscn" id="6_x8pjp"]
 [ext_resource type="Script" path="res://Scenes/maps/WeaponManager.gd" id="7_v8yof"]
@@ -271,9 +270,7 @@ layer_3/tile_data = PackedInt32Array(458789, 393218, 9, 524325, 393218, 9, 58986
 
 [node name="Player" parent="." instance=ExtResource("2_qaico")]
 z_index = 100
-position = Vector2(608, 546)
-speed = 100
-can_shoot = false
+position = Vector2(563, 425)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1.19209e-07, -9.53674e-07)
@@ -282,7 +279,6 @@ position_smoothing_enabled = true
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("3_cfel0")
-bullet_scene = ExtResource("4_d2ryl")
 
 [node name="EMENEM" type="Node2D" parent="."]
 
