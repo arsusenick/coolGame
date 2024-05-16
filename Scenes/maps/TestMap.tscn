@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dedsdvef7kvfj"]
+[gd_scene load_steps=13 format=3 uid="uid://dedsdvef7kvfj"]
 
 [ext_resource type="Texture2D" uid="uid://bded2na08sjr7" path="res://Sprites/Environment/Ghetto.png" id="1_80tt3"]
 [ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Scenes/players/Player.tscn" id="2_qaico"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://pdunxfv75djd" path="res://Scenes/weapon/BasicWeapon/pistol.tscn" id="6_x8pjp"]
 [ext_resource type="Script" path="res://Scenes/maps/WeaponManager.gd" id="7_v8yof"]
 [ext_resource type="PackedScene" uid="uid://scm5ocupjncd" path="res://Scenes/UserInterface.tscn" id="8_go745"]
-[ext_resource type="Script" path="res://Scripts/minimap.gd" id="9_gvoxb"]
 [ext_resource type="Script" path="res://Scripts/tileMinimap.gd" id="10_vqdla"]
 [ext_resource type="Texture2D" uid="uid://cv1uoije2vid8" path="res://Sprites/Interface/MinimapMarker.png" id="11_otg7a"]
 
@@ -299,27 +298,6 @@ script = ExtResource("7_v8yof")
 weapons = Array[PackedScene]([ExtResource("6_x8pjp")])
 
 [node name="UserInterface" parent="." instance=ExtResource("8_go745")]
-
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="UserInterface"]
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1209.6
-offset_top = 16.0
-offset_right = -1169.6
-offset_bottom = 56.0
-grow_horizontal = 0
-pivot_offset = Vector2(40.0001, 0)
-
-[node name="SubViewport" type="SubViewport" parent="UserInterface/SubViewportContainer2"]
-handle_input_locally = false
-size = Vector2i(96, 96)
-render_target_update_mode = 0
-script = ExtResource("9_gvoxb")
-
-[node name="Camera2D" type="Camera2D" parent="UserInterface/SubViewportContainer2/SubViewport"]
-visible = false
 
 [node name="MinimapPanel" type="PanelContainer" parent="UserInterface"]
 anchors_preset = 1

@@ -9,7 +9,7 @@ attackSpeed = 100
 accuracy = 1
 weaponName = "pistol"
 damage = 10
-projectile_speed = 10
+projectile_speed = 500
 projectile = ExtResource("2_gcq2d")
 
 [node name="weapon" parent="." index="0"]

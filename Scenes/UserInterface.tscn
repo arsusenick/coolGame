@@ -1,40 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://scm5ocupjncd"]
 
+[ext_resource type="Script" path="res://Scenes/UserInterface.gd" id="1_62fx5"]
 [ext_resource type="Texture2D" uid="uid://uqgdwhdd6htx" path="res://Sprites/Interface/Health.png" id="1_svrrq"]
 [ext_resource type="Texture2D" uid="uid://ex36pojw5sxd" path="res://Sprites/Interface/WeaponSlot.png" id="2_tch34"]
 [ext_resource type="Texture2D" uid="uid://f4ta0fveg4ha" path="res://Sprites/Interface/SpecialSlot.png" id="3_m4f4h"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1iw4v"]
-atlas = ExtResource("1_svrrq")
-region = Rect2(0, 0, 16, 16)
-
 [node name="UserInterface" type="CanvasLayer"]
 scale = Vector2(2.5, 2.5)
 transform = Transform2D(2.5, 0, 0, 2.5, 0, 0)
+script = ExtResource("1_62fx5")
+atlas_image = ExtResource("1_svrrq")
 
 [node name="HealthBar" type="HBoxContainer" parent="."]
 offset_left = 16.0
 offset_top = 9.6
 offset_right = 144.0
 offset_bottom = 49.6
-
-[node name="HeartIcon" type="TextureRect" parent="HealthBar"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_1iw4v")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="HeartIcon2" type="TextureRect" parent="HealthBar"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_1iw4v")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="HeartIcon3" type="TextureRect" parent="HealthBar"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_1iw4v")
-expand_mode = 2
-stretch_mode = 4
 
 [node name="WeaponBar" type="HBoxContainer" parent="."]
 anchors_preset = 2

@@ -64,7 +64,7 @@ func _physics_process(delta):
 			#else: animState = "walk_down"
 	
 	#print(str(animState))
-	$Character/PlayerAnimation.play(animState)
+	$Character/PlayerAnimation.play("walk_left")
 	move_and_slide()
 		
 func get_damage(damage: int):

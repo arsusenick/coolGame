@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bu172clhhjfrv"]
+[gd_scene load_steps=22 format=3 uid="uid://bu172clhhjfrv"]
 
 [ext_resource type="Script" path="res://Scripts/Movement.gd" id="1_ebj8t"]
 [ext_resource type="Texture2D" uid="uid://1nmtlk8i6nse" path="res://Sprites/Characters/Red mage.png" id="2_mptqa"]
 [ext_resource type="AudioStream" uid="uid://n7cprgrg2fdj" path="res://Ultra Instinct (Single).mp3" id="3_s3hpy"]
 [ext_resource type="Texture2D" uid="uid://1wpv4t78f16l" path="res://Sprites/Hands.png" id="4_uqh1q"]
 [ext_resource type="Script" path="res://Scenes/players/Stats.gd" id="5_e5na2"]
+[ext_resource type="PackedScene" uid="uid://scm5ocupjncd" path="res://Scenes/UserInterface.tscn" id="6_cnykm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdxr"]
 radius = 7.0
@@ -782,6 +783,8 @@ debug_color = Color(0.883355, 0.000325556, 0.813666, 0.42)
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("5_e5na2")
+
+[node name="UserInterface" parent="." instance=ExtResource("6_cnykm")]
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

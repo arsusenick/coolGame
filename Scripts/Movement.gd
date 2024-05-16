@@ -7,6 +7,7 @@ signal pickUp
 
 @onready var playerStats = $Stats
 @onready var timer = $ShootTimer
+@onready var user_interface = $UserInterface
 
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
 var screen_size: Vector2
@@ -19,6 +20,7 @@ var weaponName = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	user_interface.set_health_icon(playerStats.player_health, playerStats.order)
 	#position = Vector2(200,150)
 
 func get_weapon_stats():
@@ -37,6 +39,9 @@ func get_input(anima):
 		$Character/PlayerAnimation.stop()
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
+		playerStats.change_health()
+		user_interface.set_health_icon(playerStats.player_health, playerStats.order)
+		print(str(playerStats.player_health))
 		var dir = get_global_mouse_position() - position
 		shoot.emit(position, dir, bullet_damage, bullet_speed, playerStats.player_weapon.projectile)
 		can_shoot = false

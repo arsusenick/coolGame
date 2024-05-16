@@ -1,8 +1,8 @@
 extends TileMap
 
-@export var map_w = 100
-@export var map_h = 50
-@export var min_room_size = 10
+@export var map_w = 150
+@export var map_h = 100
+@export var min_room_size = 20
 @export var min_room_factor = 0.4
 @onready var Util = $"../Util"
 
