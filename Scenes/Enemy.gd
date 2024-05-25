@@ -64,7 +64,7 @@ func _physics_process(delta):
 			#else: animState = "walk_down"
 	
 	#print(str(animState))
-	$Character/PlayerAnimation.play("walk_left")
+	$Character/PlayerAnimation.play(animState)
 	move_and_slide()
 		
 func get_damage(damage: int):
@@ -82,7 +82,7 @@ func death():
 	animState = "death"
 	$Character/PlayerAnimation.play(animState)
 	$Aggr/AggroRange.set_collision_mask_value(2, false)
-	$".".set_collision_layer_value(3, false)
+	set_collision_layer_value(3, false)
 	
 func _on_recalculate_timer_timeout():
 	recalc_path()

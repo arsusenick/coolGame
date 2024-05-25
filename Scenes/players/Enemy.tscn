@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://shjqvn85bxuk"]
+[gd_scene load_steps=17 format=3 uid="uid://shjqvn85bxuk"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_ioihp"]
-[ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Sprites/Characters/Skeleton.png" id="2_irnmn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_savth"]
 radius = 6.06709
@@ -490,7 +489,6 @@ shape = SubResource("CircleShape2D_savth")
 [node name="Character" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.31, 1.31)
-texture = ExtResource("2_irnmn")
 hframes = 8
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="Character"]

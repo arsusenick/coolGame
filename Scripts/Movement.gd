@@ -9,6 +9,7 @@ signal pickUp
 @onready var timer = $ShootTimer
 @onready var user_interface = $UserInterface
 
+
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
 var screen_size: Vector2
 var animState = "idle"
@@ -34,12 +35,12 @@ func get_input(anima):
 	#print(input_dir)
 	velocity = input_dir.normalized() * playerStats.player_speed
 	if(input_dir.x != 0 or input_dir.y != 0):
-		$Character/PlayerAnimation.play(anima)
+		$Character/moveAnim.play(anima)
 	else:
-		$Character/PlayerAnimation.stop()
+		$Character/moveAnim.stop()
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
-		playerStats.change_health()
+		playerStats.change_health(1)
 		user_interface.set_health_icon(playerStats.player_health, playerStats.order)
 		print(str(playerStats.player_health))
 		var dir = get_global_mouse_position() - position
@@ -101,8 +102,15 @@ func play_anim(direction: Vector2):
 			animState = "walk_down"
 		elif (direction.y < 0):
 			animState = "walk_up"
-	$Character/PlayerAnimation.play(animState)
+	$Character/moveAnim.play(animState)
 
+func get_damage(dmg: int):
+	print(str(dmg)+" lol")
+	playerStats.change_health(dmg)
+	user_interface.set_health_icon(playerStats.player_health, playerStats.order)
+	$immortalityTimer.start()
+	$Character/immortalityAnim.play("immortality")
+	set_collision_layer_value(2, false)
 
 func _on_shoot_timer_timeout():
 	can_shoot = true # Replace with function body.
@@ -114,3 +122,8 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(area):
 	if area.get_weapon_type() == "basic_weapon":
 		weaponName = null
+
+
+func _on_immortality_timer_timeout():
+	$Character/immortalityAnim.stop()
+	set_collision_layer_value(2, true)
