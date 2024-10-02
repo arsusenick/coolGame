@@ -11,7 +11,6 @@ signal pickUp
 
 
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
-var screen_size: Vector2
 var animState = "idle"
 var bullet_damage = 0
 var bullet_speed = 0
@@ -20,9 +19,7 @@ var weaponName = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size
 	user_interface.set_health_icon(playerStats.player_health, playerStats.order)
-	#position = Vector2(200,150)
 
 func get_weapon_stats():
 	bullet_damage = playerStats.player_weapon.damage
@@ -40,9 +37,7 @@ func get_input(anima):
 		$Character/moveAnim.stop()
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
-		playerStats.change_health(1)
 		user_interface.set_health_icon(playerStats.player_health, playerStats.order)
-		print(str(playerStats.player_health))
 		var dir = get_global_mouse_position() - position
 		shoot.emit(position, dir, bullet_damage, bullet_speed, playerStats.player_weapon.projectile)
 		can_shoot = false
@@ -82,28 +77,6 @@ func _physics_process(delta):
 	$Character.frame = testDirect[angle]
 	#print(angle)
 
-func play_anim(direction: Vector2):
-	if (direction.x > 0):
-		if (direction.y > 0):
-			animState = "walk_right_down"
-		elif (direction.y < 0):
-			animState = "walk_right_up"
-		else:
-			animState = "walk_right"
-	elif (direction.x < 0):
-		if (direction.y > 0):
-			animState = "walk_left_down"
-		elif (direction.y < 0):
-			animState = "walk_left_up"
-		else:
-			animState = "walk_left"
-	else:
-		if (direction.y > 0):
-			animState = "walk_down"
-		elif (direction.y < 0):
-			animState = "walk_up"
-	$Character/moveAnim.play(animState)
-
 func get_damage(dmg: int):
 	print(str(dmg)+" lol")
 	playerStats.change_health(dmg)
@@ -116,11 +89,11 @@ func _on_shoot_timer_timeout():
 	can_shoot = true # Replace with function body.
 
 func _on_area_2d_area_entered(area):
-	if area.get_weapon_type() == "basic_weapon":
+	if area.get_scene_file_path() == "basic_weapon" && area.get_weapon_type() == "basic_weapon":
 		weaponName = area
 		
 func _on_area_2d_area_exited(area):
-	if area.get_weapon_type() == "basic_weapon":
+	if area.get_scene_file_path() == "basic_weapon" && area.get_weapon_type() == "basic_weapon":
 		weaponName = null
 
 

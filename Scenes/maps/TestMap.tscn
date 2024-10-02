@@ -280,15 +280,15 @@ position_smoothing_enabled = true
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("3_cfel0")
 
-[node name="EMENEM" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="Skeleton" parent="EMENEM" instance=ExtResource("4_rai1o")]
+[node name="Skeleton" parent="Enemies" instance=ExtResource("4_rai1o")]
 position = Vector2(197, 469)
 
-[node name="Skeleton2" parent="EMENEM" instance=ExtResource("4_rai1o")]
+[node name="Skeleton2" parent="Enemies" instance=ExtResource("4_rai1o")]
 position = Vector2(300, 571)
 
-[node name="Skeleton3" parent="EMENEM" instance=ExtResource("4_rai1o")]
+[node name="Skeleton3" parent="Enemies" instance=ExtResource("4_rai1o")]
 position = Vector2(260, 334)
 
 [node name="WeaponManager" type="Node2D" parent="."]

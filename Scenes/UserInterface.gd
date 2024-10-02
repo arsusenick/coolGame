@@ -29,8 +29,8 @@ func draw_heart(heart_name: String):
 func remove_health():
 	for i in health_bar.get_children():
 		i.queue_free()
-	
-	
+
+
 func set_health_icon(health_count: Dictionary, order: Array[String]):
 	remove_health()
 	#print("dsa"+str(health_count))	
@@ -40,7 +40,6 @@ func set_health_icon(health_count: Dictionary, order: Array[String]):
 		if health_count[type_health] % 2 == 1:
 			draw_heart(type_health + "_SEMI")
 	print(str(health_bar.get_children()))
-	
 
 
 func change_heart(heart: int):
