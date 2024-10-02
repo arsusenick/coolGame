@@ -393,6 +393,23 @@ tracks/2/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_i77nk"]
+resource_name = "immortality"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.137255), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_pevqw"]
 resource_name = "walk_down"
 length = 0.6
@@ -722,23 +739,6 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_i77nk"]
-resource_name = "immortality"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.137255), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg0vs"]
 _data = {
 "RESET": SubResource("Animation_ahva6"),
@@ -818,6 +818,7 @@ debug_color = Color(0.883355, 0.000325556, 0.813666, 0.42)
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("5_e5na2")
+player_speed = 100
 
 [node name="UserInterface" parent="." instance=ExtResource("6_cnykm")]
 

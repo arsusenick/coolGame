@@ -497,6 +497,7 @@ libraries = {
 }
 
 [node name="Navigation" type="Node2D" parent="."]
+visible = false
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
 debug_enabled = true
@@ -506,6 +507,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="Aggr" type="Node2D" parent="."]
+visible = false
 
 [node name="AggroRange" type="Area2D" parent="Aggr"]
 collision_layer = 4
