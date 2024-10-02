@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck0we7eljohpo"]
+
+[ext_resource type="PackedScene" uid="uid://bh6nn2w1pkl0x" path="res://Scenes/weapon/weapon.tscn" id="1_8rnje"]
+[ext_resource type="Script" path="res://Scenes/weapon/basic_weapon.gd" id="2_lt53i"]
+
+[node name="BasicWeapon" instance=ExtResource("1_8rnje")]
+script = ExtResource("2_lt53i")
+attackSpeed = 0
+accuracy = 0
+weaponType = "basic_weapon"
+weaponName = ""

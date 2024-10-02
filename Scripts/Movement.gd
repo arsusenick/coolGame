@@ -1,47 +1,63 @@
 extends CharacterBody2D
 
 signal shoot
+signal pickUp
 
-@export var speed = 50
+@export var can_shoot: bool = false
+
+@onready var playerStats = $Stats
+@onready var timer = $ShootTimer
+@onready var user_interface = $UserInterface
+
+
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
-@export var can_shoot: bool
-
 var screen_size: Vector2
 var animState = "idle"
+var bullet_damage = 0
+var bullet_speed = 0
+var weaponName = null
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	user_interface.set_health_icon(playerStats.player_health, playerStats.order)
+	#position = Vector2(200,150)
 
-	position = Vector2(200,150)
-
+func get_weapon_stats():
+	bullet_damage = playerStats.player_weapon.damage
+	timer.wait_time = 60 / playerStats.player_weapon.attackSpeed
+	bullet_speed = playerStats.player_weapon.projectile_speed
 	can_shoot = true
-	speed = 50
-
+	
 func get_input(anima):
 	var input_dir = Input.get_vector("left","right","up","down")
 	#print(input_dir)
-	velocity = input_dir.normalized() * speed
+	velocity = input_dir.normalized() * playerStats.player_speed
 	if(input_dir.x != 0 or input_dir.y != 0):
-		$Character/PlayerAnimation.play(anima)
+		$Character/moveAnim.play(anima)
 	else:
-		$Character/PlayerAnimation.stop()
+		$Character/moveAnim.stop()
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_shoot:
+		playerStats.change_health(1)
+		user_interface.set_health_icon(playerStats.player_health, playerStats.order)
+		print(str(playerStats.player_health))
 		var dir = get_global_mouse_position() - position
-		shoot.emit(position, dir)
+		shoot.emit(position, dir, bullet_damage, bullet_speed, playerStats.player_weapon.projectile)
 		can_shoot = false
-		$AnimatedSprite2D.play()
+
 		$ShootTimer.start()
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
 func _physics_process(delta):
-	
 	move_and_slide()
-
-	position = position.clamp(Vector2.ZERO, screen_size)
-	
+	if Input.is_action_just_pressed("e") and weaponName != null:
+		playerStats.player_weapon = weaponName
+		get_weapon_stats()
+		pickUp.emit(weaponName)
 	var mouse = get_local_mouse_position()
 	var angle = snappedf(mouse.angle(), PI/4) / (PI/4)
 	angle = wrapi(int(angle), 0, 8)
@@ -86,9 +102,28 @@ func play_anim(direction: Vector2):
 			animState = "walk_down"
 		elif (direction.y < 0):
 			animState = "walk_up"
-	$Character/PlayerAnimation.play(animState)
+	$Character/moveAnim.play(animState)
 
+func get_damage(dmg: int):
+	print(str(dmg)+" lol")
+	playerStats.change_health(dmg)
+	user_interface.set_health_icon(playerStats.player_health, playerStats.order)
+	$immortalityTimer.start()
+	$Character/immortalityAnim.play("immortality")
+	set_collision_layer_value(2, false)
 
 func _on_shoot_timer_timeout():
-	$AnimatedSprite2D.stop()
 	can_shoot = true # Replace with function body.
+
+func _on_area_2d_area_entered(area):
+	if area.get_weapon_type() == "basic_weapon":
+		weaponName = area
+		
+func _on_area_2d_area_exited(area):
+	if area.get_weapon_type() == "basic_weapon":
+		weaponName = null
+
+
+func _on_immortality_timer_timeout():
+	$Character/immortalityAnim.stop()
+	set_collision_layer_value(2, true)
