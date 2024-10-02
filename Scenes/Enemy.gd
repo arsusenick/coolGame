@@ -20,10 +20,10 @@ func _physics_process(delta):
 		return
 	
 	if player_chase and alive:
-		print(target_node)
+		#print(target_node)
 		var axis = to_local(nav_agent.get_next_path_position()).normalized()
 		position += axis*speed*delta
-		print(axis)
+		#print(axis)
 		if axis.x < -0.2:
 			if axis.y > 0.25:
 				animState = "walk_left_down"
@@ -107,4 +107,7 @@ func _on_aggro_range_area_exited(area):
 		animState = "idle"
 		$Character/PlayerAnimation.play(animState)
 
-
+func _on_hit_box_body_entered(body):
+	if body.name == "Player":
+		print("Touched player!")
+		body.get_damage(1)

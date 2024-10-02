@@ -1,9 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://shjqvn85bxuk"]
+[gd_scene load_steps=18 format=3 uid="uid://shjqvn85bxuk"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_ioihp"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_savth"]
-radius = 6.06709
 
 [sub_resource type="Animation" id="Animation_8jbym"]
 length = 0.001
@@ -468,7 +465,13 @@ _data = {
 "walk_up": SubResource("Animation_nynem")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_savth"]
+radius = 6.06709
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_fsmjp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sojdl"]
+radius = 6.10687
 
 [sub_resource type="LabelSettings" id="LabelSettings_258b5"]
 font_size = 12
@@ -482,10 +485,6 @@ script = ExtResource("1_ioihp")
 nav_agent = NodePath("Navigation/NavigationAgent2D")
 speed = 30
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.84044, 0.84044)
-shape = SubResource("CircleShape2D_savth")
-
 [node name="Character" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.31, 1.31)
@@ -495,6 +494,10 @@ hframes = 8
 libraries = {
 "": SubResource("AnimationLibrary_lg0vs")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.84044, 0.84044)
+shape = SubResource("CircleShape2D_savth")
 
 [node name="Navigation" type="Node2D" parent="."]
 visible = false
@@ -518,6 +521,15 @@ scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_fsmjp")
 debug_color = Color(0.515007, 0.562046, 0.365721, 0.42)
 
+[node name="HitBox" type="Area2D" parent="."]
+scale = Vector2(1.31, 1.31)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_sojdl")
+debug_color = Color(0.945468, 0.204153, 0.300836, 0.42)
+
 [node name="Label" type="Label" parent="."]
 offset_left = -20.0
 offset_top = -30.0
@@ -528,3 +540,4 @@ label_settings = SubResource("LabelSettings_258b5")
 [connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
 [connection signal="area_entered" from="Aggr/AggroRange" to="." method="_on_aggro_range_area_entered"]
 [connection signal="area_exited" from="Aggr/AggroRange" to="." method="_on_aggro_range_area_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
