@@ -28,7 +28,7 @@ func get_weapon_stats():
 	can_shoot = true
 	
 func get_input(anima):
-	var input_dir = Input.get_vector("left","right","up","down")
+	var input_dir = Input.get_vector("controls_left","controls_right","controls_up","controls_down")
 	#print(input_dir)
 	velocity = input_dir.normalized() * playerStats.player_speed
 	if(input_dir.x != 0 or input_dir.y != 0):
@@ -89,11 +89,11 @@ func _on_shoot_timer_timeout():
 	can_shoot = true # Replace with function body.
 
 func _on_area_2d_area_entered(area):
-	if area.get_scene_file_path() == "basic_weapon" && area.get_weapon_type() == "basic_weapon":
+	if area.get_scene_file_path() == "basic_weapon.tscn" && area.get_weapon_type() == "basic_weapon":
 		weaponName = area
 		
 func _on_area_2d_area_exited(area):
-	if area.get_scene_file_path() == "basic_weapon" && area.get_weapon_type() == "basic_weapon":
+	if area.get_scene_file_path() == "basic_weapon.tscn" && area.get_weapon_type() == "basic_weapon":
 		weaponName = null
 
 
