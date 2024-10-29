@@ -1,12 +1,12 @@
 extends CanvasLayer
 
 var heart_dictionary: Dictionary = {
-	"SH": Rect2(Vector2(0, 0), Vector2(16, 16)),
-	"SH_SEMI": Rect2(Vector2(16, 0), Vector2(16, 16)),
-	"DNR": Rect2(Vector2(0, 16), Vector2(16, 16)),
-	"DNR_SEMI": Rect2(Vector2(16, 16), Vector2(16, 16)),
-	"LNR": Rect2(Vector2(0, 32), Vector2(16, 16)),
-	"LNR_SEMI": Rect2(Vector2(16, 32), Vector2(16, 16)),
+	"RED": Rect2(Vector2(0, 0), Vector2(16, 16)),
+	"RED_SEMI": Rect2(Vector2(16, 0), Vector2(16, 16)),
+	"CURSED": Rect2(Vector2(0, 16), Vector2(16, 16)),
+	"CURSED_SEMI": Rect2(Vector2(16, 16), Vector2(16, 16)),
+	"POISONED": Rect2(Vector2(0, 32), Vector2(16, 16)),
+	"POISONED_SEMI": Rect2(Vector2(16, 32), Vector2(16, 16)),
 	}
 
 var atlas = AtlasTexture.new()
@@ -33,7 +33,6 @@ func remove_health():
 
 func set_health_icon(health_count: Dictionary, order: Array[String]):
 	remove_health()
-	#print("dsa"+str(health_count))	
 	for type_health in order:
 		for i in range(health_count[type_health]/2):
 			draw_heart(type_health)
@@ -58,5 +57,5 @@ func _ready():
 	#var region = Rect2(Vector2(0, 0), Vector2(16, 16))  
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

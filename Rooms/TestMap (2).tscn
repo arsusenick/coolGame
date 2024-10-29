@@ -352,6 +352,3 @@ bullet_speed = 230
 position = Vector2(592, 348)
 turret_angel = 90.0
 bullet_speed = 230
-
-[connection signal="pickUp" from="Player" to="WeaponManager" method="_on_player_pick_up"]
-[connection signal="shoot" from="Player" to="BulletManager" method="_on_player_shoot"]

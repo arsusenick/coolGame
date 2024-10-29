@@ -1,4 +1,4 @@
-extends "res://Scripts/weapon.gd"
+extends "res://Weapons/weapon.gd"
 
 @export var attackSpeed: int
 @export var accuracy: int

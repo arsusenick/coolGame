@@ -8,8 +8,9 @@ signal pickUp
 @onready var playerStats = $Stats
 @onready var timer = $ShootTimer
 @onready var user_interface = $UserInterface
+@onready var fsm = $FiniteStateMachine
 
-
+ 
 var testDirect: Dictionary = {0:2, 1:1, 2:0, 3:7, 4:6, 5:5, 6:4, 7:3}
 var animState = "idle"
 var bullet_damage = 0
@@ -47,9 +48,9 @@ func get_input(anima):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide()
-	if Input.is_action_just_pressed("e") and weaponName != null:
+	if Input.is_action_just_pressed("controls_interact") and weaponName != null:
 		playerStats.player_weapon = weaponName
 		get_weapon_stats()
 		pickUp.emit(weaponName)
@@ -76,6 +77,7 @@ func _physics_process(delta):
 	get_input(animState)
 	$Character.frame = testDirect[angle]
 	#print(angle)
+	$Label.set_text("state:" + str(fsm.current_state))
 
 func get_damage(dmg: int):
 	print(str(dmg)+" lol")

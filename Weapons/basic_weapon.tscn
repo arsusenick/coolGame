@@ -5,7 +5,9 @@
 
 [node name="BasicWeapon" instance=ExtResource("1_gp874")]
 script = ExtResource("2_41ojd")
-attackSpeed = 0
-accuracy = 0
-weaponType = "basic_weapon"
-weaponName = ""
+attackSpeed = null
+accuracy = null
+weaponType = null
+weaponName = null
+damage = null
+projectile_speed = null
