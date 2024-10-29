@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="SWMG Project"
-run/main_scene="res://Scenes/maps/TestMap.tscn"
+run/main_scene="res://Rooms/TestMap (2).tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PlayerStats="*res://Characters/Player/PlayerStats.gd"
 
 [display]
 
@@ -95,5 +99,3 @@ controls_cancel_menu={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
