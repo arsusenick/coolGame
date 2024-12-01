@@ -11,8 +11,5 @@
 [node name="Player" parent="." instance=ExtResource("4_le562")]
 z_index = 100
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position_smoothing_enabled = true
-
 [node name="Rooms" type="Node2D" parent="."]
 script = ExtResource("3_441xx")
