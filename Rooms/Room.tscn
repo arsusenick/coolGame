@@ -701,6 +701,8 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="Entrance" type="Node" parent="."]
 
+[node name="Exits" type="Node" parent="."]
+
 [node name="Doors" type="Node" parent="."]
 
 [node name="EnemySpawnPositions" type="Node" parent="."]

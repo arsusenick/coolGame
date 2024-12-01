@@ -57,3 +57,60 @@ func _spawn_rooms() -> void:
 
 		add_child(room)
 		previous_room = room
+
+
+func _spin_room(clockwise: bool, room: Room) -> void:
+	var entrance: Marker2D = room.get_node("Entrance/Position")
+	var exits: Array[Marker2D] = room.get_node("Exits").get_children()
+
+	if clockwise:
+		for exit in exits:
+			match exit.name:
+				"Top":
+					exit.name = "Right"
+				"Right":
+					exit.name = "Bottom"
+				"Bottom":
+					exit.name = "Left"
+				"Left":
+					exit.name = "Top"
+				_:
+					
+	else:
+
+
+
+
+
+
+var occupied_positions: Dictionary = {}
+
+func _spawn_rooms() -> void:
+	occupied_positions.clear()
+	var start_room = _create_room(SPAWN_ROOMS[randi() % SPAWN_ROOMS.size()], Vector2(0, 0))
+	player.position = start_room.get_node("PlayerSpawnPosition").position
+	var open_positions = [start_room.get_node("Exits/Top").position]
+	
+	for i in range(1, num_levels):
+		if open_positions.is_empty():
+			break  # Нет доступных мест для размещения новых комнат
+		var current_pos = open_positions.pop_back()
+		var room_scene = END_ROOMS[randi() % END_ROOMS.size()] if i == num_levels - 1 else INTERMEDIATE_ROOMS[randi() % INTERMEDIATE_ROOMS.size()]
+		var new_room = _create_room(room_scene, current_pos)
+		
+		if i != num_levels - 1:
+			var exits = new_room.get_node("Exits").get_children()
+			for exit in exits:
+				var exit_pos = new_room.global_position + exit.global_position
+				var grid_pos = exit_pos / TILE_SIZE
+				if grid_pos in occupied_positions:
+					continue
+				occupied_positions[grid_pos] = true
+				open_positions.append(grid_pos)
+
+func _create_room(scene: PackedScene, position: Vector2) -> Node2D:
+	var room = scene.instantiate()
+	room.position = position * TILE_SIZE
+	add_child(room)
+	occupied_positions[position] = true
+	return room
