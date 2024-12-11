@@ -681,12 +681,27 @@ texture = ExtResource("1_4pmhy")
 8:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:6/0/physics_layer_0/angular_velocity = 0.0
 8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:4/size_in_atlas = Vector2i(1, 2)
+9:4/0 = 0
+9:4/0/texture_origin = Vector2i(0, 8)
+9:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:4/0/physics_layer_0/angular_velocity = 0.0
+10:4/size_in_atlas = Vector2i(1, 2)
+10:4/0 = 0
+10:4/0/texture_origin = Vector2i(0, 8)
+10:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:4/0/physics_layer_0/angular_velocity = 0.0
+11:4/size_in_atlas = Vector2i(1, 2)
+11:4/0 = 0
+11:4/0/texture_origin = Vector2i(0, 8)
+11:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_orxm3"]
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7cyj6")
 
-[node name="Room" type="Node2D"]
+[node name="Room2" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -698,6 +713,9 @@ layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array()
 layer_2/name = "Floor2"
 layer_2/tile_data = PackedInt32Array()
+layer_3/name = "Decorations"
+layer_3/z_index = 2
+layer_3/tile_data = PackedInt32Array()
 
 [node name="Entrance" type="Node" parent="."]
 
