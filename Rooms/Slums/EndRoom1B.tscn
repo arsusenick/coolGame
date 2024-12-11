@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dshve18c2x5fi"]
+[gd_scene load_steps=2 format=3 uid="uid://dshve18c2x5fi"]
 
 [ext_resource type="PackedScene" uid="uid://530cjj2mse2s" path="res://Rooms/Room.tscn" id="1_b103n"]
-[ext_resource type="Texture2D" uid="uid://cjuvum8vj5ppt" path="res://Rooms/Cone.png" id="2_0w5kj"]
 
 [node name="Room" instance=ExtResource("1_b103n")]
 
@@ -12,9 +11,3 @@ layer_2/tile_data = PackedInt32Array(327682, 393217, 14, 327683, 327681, 15, 327
 
 [node name="Position" type="Marker2D" parent="Entrance" index="0"]
 position = Vector2(144, 208)
-
-[node name="Cone" type="Sprite2D" parent="." index="5"]
-z_index = 1
-position = Vector2(143, 127.25)
-scale = Vector2(13.75, 5.71875)
-texture = ExtResource("2_0w5kj")

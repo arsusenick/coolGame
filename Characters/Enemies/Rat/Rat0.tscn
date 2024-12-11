@@ -1,6 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://shjqvn85bxuk"]
+[gd_scene load_steps=16 format=3 uid="uid://yafp6r16646w"]
 
-[ext_resource type="Script" path="res://Characters/Enemies/Enemy.gd" id="1_ioihp"]
+[ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Characters/Enemies/Enemy.tscn" id="1_mnoa8"]
+[ext_resource type="Script" path="res://Characters/Enemies/Rat/Rat.gd" id="2_lrgwk"]
+[ext_resource type="Texture2D" uid="uid://s4hvcicrd72t" path="res://Characters/Enemies/Rat/Rat.png" id="3_nniht"]
 
 [sub_resource type="Animation" id="Animation_8jbym"]
 length = 0.001
@@ -27,54 +29,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.31, 1.31)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:skew")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_mhke2"]
@@ -498,152 +452,11 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_81gh6"]
-resource_name = "leap"
-length = 0.4
-loop_mode = 1
-step = 0.02
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.16, 0.34, 0.4),
-"transitions": PackedFloat32Array(1, 1.36604, 0.378929, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-2.165, 1), Vector2(0, -5), Vector2(1.05, -1), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.16, 0.34, 0.4),
-"transitions": PackedFloat32Array(1, 1.36604, 0.378929, 1, 1),
-"update": 0,
-"values": [0.0, 0.0436332, -0.16057, 0.0698132, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = false
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.16, 0.34, 0.4),
-"transitions": PackedFloat32Array(1, 1.36604, 0.378929, 1, 1),
-"update": 0,
-"values": [Vector2(1.31, 1.31), Vector2(1.255, 1.31), Vector2(1.364, 1.405), Vector2(1.227, 1.255), Vector2(1.31, 1.31)]
-}
-
-[sub_resource type="Animation" id="Animation_3ldcl"]
-resource_name = "tail_whip"
-length = 0.5
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-2.775, 0), Vector2(0.77, 0), Vector2(2.085, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.15708, -1.66679, -5.07018, -6.28319]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = false
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1.31, 1.31), Vector2(1.21, 1.395), Vector2(1.155, 1.275), Vector2(1.26, 1.27), Vector2(1.31, 1.31)]
-}
-
-[sub_resource type="Animation" id="Animation_xx1xw"]
-resource_name = "spin"
-length = 0.6
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-8, 0), Vector2(8, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1.31, 1.31), Vector2(1e-05, 1.31), Vector2(-1.31, 1.31), Vector2(1e-05, 1.31), Vector2(1.31, 1.31)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:skew")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.235619, 0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg0vs"]
 _data = {
 "RESET": SubResource("Animation_8jbym"),
 "death": SubResource("Animation_mhke2"),
 "idle": SubResource("Animation_bio3l"),
-"leap": SubResource("Animation_81gh6"),
-"spin": SubResource("Animation_xx1xw"),
-"tail_whip": SubResource("Animation_3ldcl"),
 "walk_down": SubResource("Animation_pevqw"),
 "walk_left": SubResource("Animation_llp2b"),
 "walk_left_down": SubResource("Animation_3obvs"),
@@ -654,78 +467,19 @@ _data = {
 "walk_up": SubResource("Animation_nynem")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_savth"]
-radius = 6.06709
+[node name="Rat" instance=ExtResource("1_mnoa8")]
+script = ExtResource("2_lrgwk")
+max_health = 100
+attack_range = 200.0
+move_speed = 100.0
+attack_cooldown = 2.0
+phase_threshold = 0.5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fsmjp"]
+[node name="Character" parent="." index="0"]
+texture = ExtResource("3_nniht")
+hframes = 1
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sojdl"]
-radius = 6.10687
-
-[sub_resource type="LabelSettings" id="LabelSettings_258b5"]
-font_size = 12
-
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
-collision_layer = 4
-collision_mask = 3
-motion_mode = 1
-wall_min_slide_angle = 0.0
-script = ExtResource("1_ioihp")
-nav_agent = NodePath("Navigation/NavigationAgent2D")
-speed = 30
-
-[node name="Character" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(1.31, 1.31)
-hframes = 8
-
-[node name="PlayerAnimation" type="AnimationPlayer" parent="Character"]
+[node name="PlayerAnimation2" type="AnimationPlayer" parent="Character" index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_lg0vs")
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.84044, 0.84044)
-shape = SubResource("CircleShape2D_savth")
-
-[node name="Navigation" type="Node2D" parent="."]
-visible = false
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
-debug_enabled = true
-
-[node name="RecalculateTimer" type="Timer" parent="Navigation"]
-wait_time = 0.1
-autostart = true
-
-[node name="Aggr" type="Node2D" parent="."]
-
-[node name="AggroRange" type="Area2D" parent="Aggr"]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Aggr/AggroRange"]
-scale = Vector2(15, 15)
-shape = SubResource("CircleShape2D_fsmjp")
-debug_color = Color(0.515007, 0.562046, 0.365721, 0.42)
-
-[node name="HitBox" type="Area2D" parent="."]
-scale = Vector2(1.31, 1.31)
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_sojdl")
-debug_color = Color(0.945468, 0.204153, 0.300836, 0.42)
-
-[node name="Label" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -30.0
-offset_right = 20.0
-offset_bottom = -7.0
-label_settings = SubResource("LabelSettings_258b5")
-
-[connection signal="timeout" from="Navigation/RecalculateTimer" to="." method="_on_recalculate_timer_timeout"]
-[connection signal="area_entered" from="Aggr/AggroRange" to="." method="_on_aggro_range_area_entered"]
-[connection signal="area_exited" from="Aggr/AggroRange" to="." method="_on_aggro_range_area_exited"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

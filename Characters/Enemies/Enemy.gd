@@ -64,7 +64,8 @@ func _physics_process(delta):
 			#else: animState = "walk_down"
 	
 	#print(str(animState))
-	$Character/PlayerAnimation.play(animState)
+	if alive:
+		$Character/PlayerAnimation.play(animState)
 	move_and_slide()
 		
 func get_damage(damage: int):
@@ -108,6 +109,8 @@ func _on_aggro_range_area_exited(area):
 		$Character/PlayerAnimation.play(animState)
 
 func _on_hit_box_body_entered(body):
+	if alive:
+		get_damage(30)
 	if body.name == "Player":
 		print("Touched player!")
 		body.get_damage(1)
