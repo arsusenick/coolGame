@@ -35,6 +35,9 @@ func control_movement():
 	if Input.is_action_just_pressed("controls_dash"):
 		mult = 4
 		$Character/immortalityAnim.play("dodge")
+	
+	if Input.is_physical_key_pressed(KEY_SHIFT):
+		mult = 4
 
 	if direction.length_squared() > 0:
 		velocity = velocity.lerp(direction.normalized() * speed * mult, acceleration * mult)
@@ -49,6 +52,12 @@ func control_look():
 	angle = wrapi(int(angle), 0, 8)
 	var frame = wrapi(angle - 6, 0, 8)
 	$Character.frame = frame
+
+	#FIXME Временный зум
+	if Input.is_action_just_released("controls_mouse_wheel_up"):
+		$Camera2D.zoom += Vector2(0.1, 0.1)
+	if Input.is_action_just_released("controls_mouse_wheel_down"):
+		$Camera2D.zoom -= Vector2(0.1, 0.1)
 
 
 #TODO Пересмотреть работу с таймером и избавиться от лишней ноды.
