@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @export var nav_agent: NavigationAgent2D
 @export var speed = 35
 @export var health = 30
@@ -9,7 +10,7 @@ var player_chase = false
 var player = null
 var alive = true
 var animState = "idle"
-var target_node = null
+var target_node: Node2D = null
 func _ready():
 	$Label.set_text(str(health))
 	nav_agent.path_desired_distance = 4
@@ -110,4 +111,4 @@ func _on_aggro_range_area_exited(area):
 func _on_hit_box_body_entered(body):
 	if body.name == "Player":
 		print("Touched player!")
-		body.get_damage(1)
+		body.take_damage(1)

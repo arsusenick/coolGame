@@ -19,5 +19,3 @@ func change_health(dmg: int):
 	if player_health["SH"] != 0:
 		player_health["SH"] = player_health["SH"] - dmg
 		print(str(player_health))
-
-

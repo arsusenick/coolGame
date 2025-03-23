@@ -4,7 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Characters/Enemies/Skeleton/Skeleton.png" id="2_bqr2g"]
 
 [node name="Skeleton" instance=ExtResource("1_10d8c")]
-speed = 60
 
 [node name="Character" parent="." index="0"]
 texture = ExtResource("2_bqr2g")
+frame = 2
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="HitBox" parent="." index="4"]
+visible = false
