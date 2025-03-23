@@ -337,10 +337,10 @@ z_index = 1
 position = Vector2(-39, -1)
 
 [node name="InfoEntity" parent="Player" node_paths=PackedStringArray("entity") instance=ExtResource("5_6to27")]
-offset_left = -52.0
-offset_top = 43.0
-offset_right = -32.0
-offset_bottom = 63.0
+offset_left = -64.0
+offset_top = 35.0
+offset_right = -44.0
+offset_bottom = 55.0
 entity = NodePath("..")
 
 [node name="Hobo" parent="." instance=ExtResource("3_0k34h")]

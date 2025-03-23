@@ -11,5 +11,5 @@ func _ready():
     source_state = get_parent()
 
 # Функция, определяющая возможность перехода
-func can_transition(character: Entity) -> bool:
+func can_transition(_character: Entity) -> bool:
     return false  # Переопределяется в конкретных переходах 

@@ -29,8 +29,6 @@ func attack() -> void:
 		# Начинаем атаку
 		projectile.visible = true
 		is_active = true
-		if player.animation_player.has_animation("cast_front"):
-			player.animation_player.play("cast_front")
 	
 	# Сбрасываем таймер, пока кнопка зажата
 	attack_timer.stop()

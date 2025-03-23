@@ -1,6 +1,10 @@
 class_name EntityPlayer
 extends Entity
 
+@export var body_state_machine: FiniteStateMachine
+@export var invulnerability_state_machine: FiniteStateMachine
+@export var hands_state_machine: FiniteStateMachine
+
 @export var invulnerability_animation: AnimationPlayer
 @export var hands_animation: AnimationPlayer
 @export var invulnerability_timer: Timer
@@ -19,7 +23,7 @@ func _ready() -> void:
 	pass
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -39,7 +43,7 @@ func _input(event: InputEvent) -> void:
 
 
 # :Entity.
-func handle_movement(delta: float) -> void:
+func handle_movement(_delta: float) -> void:
 	var direction = Input.get_vector("controls_left", "controls_right", "controls_up", "controls_down")
 	
 	var mult = 1
@@ -62,7 +66,7 @@ func dodge(direction: Vector2) -> void:
 
 
 # :Entity.
-func update_animation(delta: float) -> void:
+func update_animation(_delta: float) -> void:
 	pass
 
 
@@ -78,9 +82,9 @@ func handle_basic_attack() -> void:
 		basic_weapon.stop_attack()
 
 
-func handle_sign(sign: GlobalData.SIGNS) -> void:
-	signs.append(sign)
-	print("Sign " + str(sign))
+func handle_sign(new_sign: GlobalData.SIGNS) -> void:
+	signs.append(new_sign)
+	print("Sign " + str(new_sign))
 	if signs.size() == 3:
 		print("Got 3 signs: %s %s %s. Clearing..." % signs)
 		signs.clear()
@@ -91,6 +95,7 @@ func take_damage(amount: float) -> void:
 	if is_invulnerable:
 		print("Player skiped damage")
 		return
+		
 	print("Player took damage: " + str(amount))
 	
 	hp -= amount
@@ -103,7 +108,6 @@ func take_damage(amount: float) -> void:
 	
 	is_invulnerable = true
 	invulnerability_timer.start(invulnerability_duration)
-	$Character/immortalityAnim.play("immortality")
 
 
 # :Entity.
@@ -116,7 +120,7 @@ func handle_look() -> void:
 	facing_direction = mouse.normalized()
 	var angle := snappedf(-mouse.angle(), PI/4) / (PI/4)
 	angle = wrapi(int(angle), 0, 8)
-	var frame := wrapi(angle - 6, 0, 8)
+	var frame := wrapi(int(angle - 6.0), 0, 8)
 	sprite.frame = frame
 
 	#FIXME Временный зум
@@ -127,5 +131,4 @@ func handle_look() -> void:
 
 
 func _on_invulnerabity_timer_timeout() -> void:
-	$Character/immortalityAnim.stop()
 	is_invulnerable = false

@@ -7,6 +7,7 @@ func enter():
 
 func exit():
 	animationPlayer.stop()
+	animationPlayer.speed_scale = 1
 
 
 func _update(_delta:float):

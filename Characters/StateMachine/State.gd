@@ -25,7 +25,7 @@ func update(delta: float):
 	for transition in transitions:
 		if transition.can_transition(character):
 			transitioned.emit(transition.target_state)
-			print("Player.BodyStateMachine: Transitioned from: ", name, " to: ", transition.target_state.name)
+			# print("Unknown StateMachine: Transitioned from: ", name, " to: ", transition.target_state.name)
 			return
 
 	# Выполняем логику состояния

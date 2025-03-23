@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bu172clhhjfrv"]
+[gd_scene load_steps=33 format=3 uid="uid://bu172clhhjfrv"]
 
 [ext_resource type="Script" path="res://Characters/EntityPlayer.gd" id="1_mdg8t"]
 [ext_resource type="Script" path="res://Characters/StateMachine/FiniteStateMachine.gd" id="2_jsp3y"]
@@ -15,7 +15,15 @@
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/StateDodging.gd" id="7_d3kft"]
 [ext_resource type="AnimationLibrary" uid="uid://xvm7pub6d2e4" path="res://Characters/Player/HandsAnimationLib.res" id="7_ihk8h"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleFromDodging.gd" id="9_matls"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/StateVulnerable.gd" id="10_2sobn"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/RuleToInvulnerable.gd" id="11_f88cb"]
 [ext_resource type="PackedScene" uid="uid://ni73mxvn10mj" path="res://Weapons/Basic/Firebreath/Firebreath.tscn" id="11_ol4qr"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/StateInvulnerable.gd" id="12_hfyka"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/RuleToVulnerable.gd" id="13_304mb"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/StatePassive.gd" id="14_ovkyv"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/RuleToAttacking.gd" id="15_1dgtb"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/StateAttacking.gd" id="15_qvoiu"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/RuleToPassive.gd" id="17_oc3cy"]
 
 [sub_resource type="Animation" id="Animation_epsh5"]
 length = 0.001
@@ -66,7 +74,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("..:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -217,20 +225,25 @@ height = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rx7k8"]
 radius = 14.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("invulnerability_timer", "basic_weapon", "sprite", "state_machine")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("body_state_machine", "invulnerability_state_machine", "hands_state_machine", "invulnerability_animation", "hands_animation", "invulnerability_timer", "basic_weapon", "sprite")]
 collision_layer = 2
 collision_mask = 35
 script = ExtResource("1_mdg8t")
+body_state_machine = NodePath("StateMachines/BodyStateMachine")
+invulnerability_state_machine = NodePath("StateMachines/InvulnerabilityStateMachine")
+hands_state_machine = NodePath("StateMachines/HandsStateMachine")
+invulnerability_animation = NodePath("Animation/InvulnerabilityAnimation")
+hands_animation = NodePath("Animation/HandsAnimation")
 invulnerability_timer = NodePath("Timers/InvulnerabityTimer")
 basic_weapon = NodePath("Weapons/BasicWeapon/Firebreath")
 sprite = NodePath("Character")
-state_machine = NodePath("StateMachines/BodyStateMachine")
 display_name = "Player"
 
 [node name="StateMachines" type="Node" parent="."]
 
-[node name="BodyStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("animationPlayer", "initial_state")]
+[node name="BodyStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("character", "animationPlayer", "initial_state")]
 script = ExtResource("2_jsp3y")
+character = NodePath("../..")
 animationPlayer = NodePath("../../Animation/BodyAnimation")
 initial_state = NodePath("IDLE")
 
@@ -271,6 +284,54 @@ animationPlayer = NodePath("../../../Animation/BodyAnimation")
 script = ExtResource("9_matls")
 target_state = NodePath("../../WALKING")
 
+[node name="InvulnerabilityStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("character", "animationPlayer", "initial_state")]
+script = ExtResource("2_jsp3y")
+character = NodePath("../..")
+animationPlayer = NodePath("../../Animation/InvulnerabilityAnimation")
+initial_state = NodePath("VULNERABLE")
+
+[node name="VULNERABLE" type="Node" parent="StateMachines/InvulnerabilityStateMachine" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("10_2sobn")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/InvulnerabilityAnimation")
+
+[node name="ToInvulnerable" type="Node" parent="StateMachines/InvulnerabilityStateMachine/VULNERABLE" node_paths=PackedStringArray("target_state")]
+script = ExtResource("11_f88cb")
+target_state = NodePath("../../INVULNERABLE")
+
+[node name="INVULNERABLE" type="Node" parent="StateMachines/InvulnerabilityStateMachine" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("12_hfyka")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/InvulnerabilityAnimation")
+
+[node name="ToVulnerable" type="Node" parent="StateMachines/InvulnerabilityStateMachine/INVULNERABLE" node_paths=PackedStringArray("target_state")]
+script = ExtResource("13_304mb")
+target_state = NodePath("../../VULNERABLE")
+
+[node name="HandsStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("character", "animationPlayer", "initial_state")]
+script = ExtResource("2_jsp3y")
+character = NodePath("../..")
+animationPlayer = NodePath("../../Animation/HandsAnimation")
+initial_state = NodePath("PASSIVE")
+
+[node name="PASSIVE" type="Node" parent="StateMachines/HandsStateMachine" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("14_ovkyv")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/HandsAnimation")
+
+[node name="ToAttacking" type="Node" parent="StateMachines/HandsStateMachine/PASSIVE" node_paths=PackedStringArray("target_state")]
+script = ExtResource("15_1dgtb")
+target_state = NodePath("../../ATTACKING")
+
+[node name="ATTACKING" type="Node" parent="StateMachines/HandsStateMachine" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("15_qvoiu")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/HandsAnimation")
+
+[node name="ToPassive" type="Node" parent="StateMachines/HandsStateMachine/ATTACKING" node_paths=PackedStringArray("target_state")]
+script = ExtResource("17_oc3cy")
+target_state = NodePath("../../PASSIVE")
+
 [node name="Animation" type="Node" parent="."]
 
 [node name="BodyAnimation" type="AnimationPlayer" parent="Animation"]
@@ -284,7 +345,7 @@ libraries = {
 root_node = NodePath("../../Character")
 libraries = {
 "": SubResource("AnimationLibrary_vyrxv"),
-"InvulnerabilityAnimationLib": ExtResource("6_0t768")
+"Invulnerability": ExtResource("6_0t768")
 }
 
 [node name="HandsAnimation" type="AnimationPlayer" parent="Animation"]
@@ -353,6 +414,7 @@ position_smoothing_enabled = true
 
 [node name="BasicWeapon" type="Node2D" parent="Weapons"]
 
-[node name="Firebreath" parent="Weapons/BasicWeapon" instance=ExtResource("11_ol4qr")]
+[node name="Firebreath" parent="Weapons/BasicWeapon" node_paths=PackedStringArray("player") instance=ExtResource("11_ol4qr")]
+player = NodePath("../../..")
 
 [connection signal="timeout" from="Timers/InvulnerabityTimer" to="." method="_on_invulnerabity_timer_timeout"]
