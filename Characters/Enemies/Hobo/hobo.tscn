@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcsu46jn18v84"]
+
+[ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Characters/Enemies/Enemy.tscn" id="1_ffalr"]
+[ext_resource type="Script" path="res://Characters/Enemies/Hobo/hobo.gd" id="2_ijmwo"]
+[ext_resource type="Texture2D" uid="uid://o0ctk7gg10to" path="res://Characters/Enemies/Hobo/Hobo.png" id="2_xiynl"]
+[ext_resource type="PackedScene" uid="uid://b3vl21q1snnti" path="res://Weapons/Basic/Bottle.tscn" id="4_lhbmd"]
+
+[sub_resource type="Animation" id="Animation_6kytn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-8, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.273674]
+}
+
+[sub_resource type="Animation" id="Animation_g23c7"]
+resource_name = "shoot"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8, 1), Vector2(-4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.273674, 1.79344, 3.56527]
+}
+
+[sub_resource type="Animation" id="Animation_k45ye"]
+resource_name = "shoot_recovery"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, 0), Vector2(-7, -2), Vector2(-8, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.56527, 1.79344, -0.273674]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlt4n"]
+_data = {
+"RESET": SubResource("Animation_6kytn"),
+"shoot": SubResource("Animation_g23c7"),
+"shoot_recovery": SubResource("Animation_k45ye")
+}
+
+[node name="Hobo" instance=ExtResource("1_ffalr")]
+script = ExtResource("2_ijmwo")
+
+[node name="Character" parent="." index="0"]
+texture = ExtResource("2_xiynl")
+
+[node name="Weapon" parent="." index="2" instance=ExtResource("4_lhbmd")]
+position = Vector2(-8, 1)
+rotation = -0.273674
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_rlt4n")
+}
+
+[node name="Navigation" parent="." index="3"]
+visible = true
+
+[node name="HitBox" parent="." index="5"]
+visible = false
