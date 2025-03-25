@@ -5,8 +5,8 @@ extends Entity
 @export var invulnerability_state_machine: FiniteStateMachine
 @export var hands_state_machine: FiniteStateMachine
 
-@export var invulnerability_animation: AnimationPlayer
-@export var hands_animation: AnimationPlayer
+#@export var invulnerability_animation: AnimationPlayer
+#@export var hands_animation: AnimationPlayer
 @export var invulnerability_timer: Timer
 
 @export var max_mana: float = 10.0
@@ -28,9 +28,10 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	handle_movement(delta)
-	handle_look()
-	handle_basic_attack()
+	if is_active:
+		handle_movement(delta)
+		handle_look()
+		handle_basic_attack()
 
 
 func _input(event: InputEvent) -> void:
@@ -112,7 +113,8 @@ func take_damage(amount: float) -> void:
 
 # :Entity.
 func die() -> void:
-	pass
+	is_active = false
+	died.emit()
 
 
 func handle_look() -> void:

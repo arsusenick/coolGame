@@ -12,7 +12,7 @@ func _ready() -> void:
 	attack_timer.one_shot = true
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !is_active:
 		return
 	

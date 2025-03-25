@@ -1,16 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmwp5mrqqynno"]
+[gd_scene load_steps=12 format=3 uid="uid://bmwp5mrqqynno"]
 
 [ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Characters/Enemies/Enemy.tscn" id="1_10d8c"]
 [ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Characters/Enemies/Skeleton/Skeleton.png" id="2_bqr2g"]
+[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/Skeleton.gd" id="2_c5jrs"]
+[ext_resource type="AnimationLibrary" uid="uid://com23fsh6wuui" path="res://Characters/Enemies/AnimLibTemp.res" id="2_prktj"]
+[ext_resource type="Script" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="3_dlj6l"]
+[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateIdle.gd" id="4_42kmu"]
+[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToDead.gd" id="5_5yt4x"]
+[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToWalking.gd" id="6_c03dl"]
+[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateWalking.gd" id="7_s1dmk"]
+[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToIdle.gd" id="8_e7gcm"]
+[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateDead.gd" id="9_3se11"]
 
 [node name="Skeleton" instance=ExtResource("1_10d8c")]
+script = ExtResource("2_c5jrs")
 
-[node name="Character" parent="." index="0"]
+[node name="BodyStateMachine" type="Node" parent="StateMachines" index="0" node_paths=PackedStringArray("character", "animationPlayer", "initial_state")]
+script = ExtResource("3_dlj6l")
+character = NodePath("../..")
+animationPlayer = NodePath("../../Animation/BodyAnimation")
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateMachines/BodyStateMachine" index="0" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("4_42kmu")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/BodyAnimation")
+
+[node name="ToDead" type="Node" parent="StateMachines/BodyStateMachine/IDLE" index="0" node_paths=PackedStringArray("target_state")]
+script = ExtResource("5_5yt4x")
+target_state = NodePath("../../DEAD")
+priority = 3
+
+[node name="ToWalking" type="Node" parent="StateMachines/BodyStateMachine/IDLE" index="1" node_paths=PackedStringArray("target_state")]
+script = ExtResource("6_c03dl")
+target_state = NodePath("../../WALKING")
+priority = 2
+
+[node name="WALKING" type="Node" parent="StateMachines/BodyStateMachine" index="1" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("7_s1dmk")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/BodyAnimation")
+
+[node name="ToDead" type="Node" parent="StateMachines/BodyStateMachine/WALKING" index="0" node_paths=PackedStringArray("target_state")]
+script = ExtResource("5_5yt4x")
+target_state = NodePath("../../DEAD")
+priority = 3
+
+[node name="ToIdle" type="Node" parent="StateMachines/BodyStateMachine/WALKING" index="1" node_paths=PackedStringArray("target_state")]
+script = ExtResource("8_e7gcm")
+target_state = NodePath("../../IDLE")
+
+[node name="DEAD" type="Node" parent="StateMachines/BodyStateMachine" index="2" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("9_3se11")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/BodyAnimation")
+
+[node name="BodyAnimation" type="AnimationPlayer" parent="Animation" index="0"]
+root_node = NodePath("../../Character")
+libraries = {
+"": ExtResource("2_prktj")
+}
+
+[node name="Character" parent="." index="3"]
 texture = ExtResource("2_bqr2g")
-frame = 2
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="4"]
 visible = false
 
-[node name="HitBox" parent="." index="4"]
+[node name="HitBox" parent="." index="5"]
 visible = false
+
+[node name="Navigation" parent="." index="6"]
+visible = true

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bded2na08sjr7" path="res://Rooms/Ghetto.png" id="1_s6x7p"]
 [ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Characters/Player/Player.tscn" id="2_lwdhy"]
 [ext_resource type="Script" path="res://Weapons/BulletManager (2).gd" id="3_qr0yo"]
-[ext_resource type="PackedScene" uid="uid://bmwp5mrqqynno" path="res://Characters/Enemies/Skeleton/skeleton.tscn" id="4_fkkr4"]
+[ext_resource type="PackedScene" uid="uid://bmwp5mrqqynno" path="res://Characters/Enemies/Skeleton/Skeleton.tscn" id="4_fkkr4"]
 [ext_resource type="Script" path="res://Weapons/WeaponManager.gd" id="5_5ht64"]
 [ext_resource type="PackedScene" uid="uid://pdunxfv75djd" path="res://Weapons/Basic/pistol.tscn" id="6_r5nnt"]
 [ext_resource type="PackedScene" uid="uid://scm5ocupjncd" path="res://UI/UserInterface.tscn" id="7_56n0c"]

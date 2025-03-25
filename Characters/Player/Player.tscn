@@ -1,11 +1,12 @@
-[gd_scene load_steps=33 format=3 uid="uid://bu172clhhjfrv"]
+[gd_scene load_steps=35 format=3 uid="uid://bu172clhhjfrv"]
 
-[ext_resource type="Script" path="res://Characters/EntityPlayer.gd" id="1_mdg8t"]
-[ext_resource type="Script" path="res://Characters/StateMachine/FiniteStateMachine.gd" id="2_jsp3y"]
+[ext_resource type="Script" path="res://Characters/Player/EntityPlayer.gd" id="1_mdg8t"]
+[ext_resource type="Script" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="2_jsp3y"]
 [ext_resource type="Texture2D" uid="uid://1nmtlk8i6nse" path="res://Characters/Player/Red mage.png" id="2_mptqa"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/StateIdle.gd" id="3_epdu2"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleToWalking.gd" id="4_6x8i1"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/StateWalking.gd" id="4_7jkui"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleToDead.gd" id="4_aadh5"]
 [ext_resource type="Texture2D" uid="uid://1wpv4t78f16l" path="res://Characters/Player/Hands.png" id="4_uqh1q"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleToDodging.gd" id="5_22cm5"]
 [ext_resource type="AnimationLibrary" uid="uid://dag2q0mfsaho0" path="res://Characters/Player/BodyAnimationLib.res" id="5_rjesq"]
@@ -18,6 +19,7 @@
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/StateVulnerable.gd" id="10_2sobn"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/RuleToInvulnerable.gd" id="11_f88cb"]
 [ext_resource type="PackedScene" uid="uid://ni73mxvn10mj" path="res://Weapons/Basic/Firebreath/Firebreath.tscn" id="11_ol4qr"]
+[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/StateDead.gd" id="11_uq8aq"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/StateInvulnerable.gd" id="12_hfyka"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/RuleToVulnerable.gd" id="13_304mb"]
 [ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/StatePassive.gd" id="14_ovkyv"]
@@ -225,15 +227,13 @@ height = 14.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rx7k8"]
 radius = 14.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("body_state_machine", "invulnerability_state_machine", "hands_state_machine", "invulnerability_animation", "hands_animation", "invulnerability_timer", "basic_weapon", "sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("body_state_machine", "invulnerability_state_machine", "hands_state_machine", "invulnerability_timer", "basic_weapon", "sprite")]
 collision_layer = 2
 collision_mask = 35
 script = ExtResource("1_mdg8t")
 body_state_machine = NodePath("StateMachines/BodyStateMachine")
 invulnerability_state_machine = NodePath("StateMachines/InvulnerabilityStateMachine")
 hands_state_machine = NodePath("StateMachines/HandsStateMachine")
-invulnerability_animation = NodePath("Animation/InvulnerabilityAnimation")
-hands_animation = NodePath("Animation/HandsAnimation")
 invulnerability_timer = NodePath("Timers/InvulnerabityTimer")
 basic_weapon = NodePath("Weapons/BasicWeapon/Firebreath")
 sprite = NodePath("Character")
@@ -252,6 +252,11 @@ script = ExtResource("3_epdu2")
 character = NodePath("../../..")
 animationPlayer = NodePath("../../../Animation/BodyAnimation")
 
+[node name="ToDead" type="Node" parent="StateMachines/BodyStateMachine/IDLE" node_paths=PackedStringArray("target_state")]
+script = ExtResource("4_aadh5")
+target_state = NodePath("../../DEAD")
+priority = 3
+
 [node name="ToWalking" type="Node" parent="StateMachines/BodyStateMachine/IDLE" node_paths=PackedStringArray("target_state")]
 script = ExtResource("4_6x8i1")
 target_state = NodePath("../../WALKING")
@@ -265,6 +270,11 @@ target_state = NodePath("../../DODGING")
 script = ExtResource("4_7jkui")
 character = NodePath("../../..")
 animationPlayer = NodePath("../../../Animation/BodyAnimation")
+
+[node name="ToDead" type="Node" parent="StateMachines/BodyStateMachine/WALKING" node_paths=PackedStringArray("target_state")]
+script = ExtResource("4_aadh5")
+target_state = NodePath("../../DEAD")
+priority = 3
 
 [node name="ToIdle" type="Node" parent="StateMachines/BodyStateMachine/WALKING" node_paths=PackedStringArray("target_state")]
 script = ExtResource("6_tdpdd")
@@ -280,9 +290,19 @@ script = ExtResource("7_d3kft")
 character = NodePath("../../..")
 animationPlayer = NodePath("../../../Animation/BodyAnimation")
 
+[node name="ToDead" type="Node" parent="StateMachines/BodyStateMachine/DODGING" node_paths=PackedStringArray("target_state")]
+script = ExtResource("4_aadh5")
+target_state = NodePath("../../DEAD")
+priority = 3
+
 [node name="FromDodging" type="Node" parent="StateMachines/BodyStateMachine/DODGING" node_paths=PackedStringArray("target_state")]
 script = ExtResource("9_matls")
 target_state = NodePath("../../WALKING")
+
+[node name="DEAD" type="Node" parent="StateMachines/BodyStateMachine" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("11_uq8aq")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/BodyAnimation")
 
 [node name="InvulnerabilityStateMachine" type="Node" parent="StateMachines" node_paths=PackedStringArray("character", "animationPlayer", "initial_state")]
 script = ExtResource("2_jsp3y")
@@ -392,8 +412,6 @@ frame = 1
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_erdxr")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 2)
 collision_layer = 2
@@ -405,16 +423,18 @@ position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_rx7k8")
 debug_color = Color(0.883355, 0.000325556, 0.813666, 0.42)
 
-[node name="UserInterface" parent="." instance=ExtResource("6_cnykm")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="BasicWeapon" type="Node2D" parent="Weapons"]
 
 [node name="Firebreath" parent="Weapons/BasicWeapon" node_paths=PackedStringArray("player") instance=ExtResource("11_ol4qr")]
 player = NodePath("../../..")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="UserInterface" parent="." instance=ExtResource("6_cnykm")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 
 [connection signal="timeout" from="Timers/InvulnerabityTimer" to="." method="_on_invulnerabity_timer_timeout"]

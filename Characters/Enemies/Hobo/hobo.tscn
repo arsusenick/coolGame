@@ -1,9 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcsu46jn18v84"]
+[gd_scene load_steps=17 format=3 uid="uid://bcsu46jn18v84"]
 
 [ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Characters/Enemies/Enemy.tscn" id="1_ffalr"]
-[ext_resource type="Script" path="res://Characters/Enemies/Hobo/hobo.gd" id="2_ijmwo"]
+[ext_resource type="Script" path="res://Characters/Enemies/Hobo/Hobo.gd" id="2_ijmwo"]
 [ext_resource type="Texture2D" uid="uid://o0ctk7gg10to" path="res://Characters/Enemies/Hobo/Hobo.png" id="2_xiynl"]
+[ext_resource type="Script" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="3_7o4xr"]
+[ext_resource type="AnimationLibrary" uid="uid://com23fsh6wuui" path="res://Characters/Enemies/AnimLibTemp.res" id="3_smofr"]
+[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateIdle.gd" id="4_hryyu"]
 [ext_resource type="PackedScene" uid="uid://b3vl21q1snnti" path="res://Weapons/Basic/Bottle.tscn" id="4_lhbmd"]
+[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToDead.gd" id="5_oul5n"]
+[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToWalking.gd" id="6_k0o83"]
+[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateWalking.gd" id="7_rv8b2"]
+[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToIdle.gd" id="8_r0it3"]
+[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateDead.gd" id="9_q6j5m"]
 
 [sub_resource type="Animation" id="Animation_6kytn"]
 length = 0.001
@@ -100,10 +108,54 @@ _data = {
 [node name="Hobo" instance=ExtResource("1_ffalr")]
 script = ExtResource("2_ijmwo")
 
-[node name="Character" parent="." index="0"]
-texture = ExtResource("2_xiynl")
+[node name="BodyStateMachine" type="Node" parent="StateMachines" index="0" node_paths=PackedStringArray("character", "animationPlayer", "initial_state")]
+script = ExtResource("3_7o4xr")
+character = NodePath("../..")
+animationPlayer = NodePath("../../Animation/BodyAnimation")
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateMachines/BodyStateMachine" index="0" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("4_hryyu")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/BodyAnimation")
+
+[node name="ToDead" type="Node" parent="StateMachines/BodyStateMachine/IDLE" index="0" node_paths=PackedStringArray("target_state")]
+script = ExtResource("5_oul5n")
+target_state = NodePath("../../DEAD")
+priority = 3
+
+[node name="ToWalking" type="Node" parent="StateMachines/BodyStateMachine/IDLE" index="1" node_paths=PackedStringArray("target_state")]
+script = ExtResource("6_k0o83")
+target_state = NodePath("../../WALKING")
+priority = 2
+
+[node name="WALKING" type="Node" parent="StateMachines/BodyStateMachine" index="1" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("7_rv8b2")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/BodyAnimation")
+
+[node name="ToDead" type="Node" parent="StateMachines/BodyStateMachine/WALKING" index="0" node_paths=PackedStringArray("target_state")]
+script = ExtResource("5_oul5n")
+target_state = NodePath("../../DEAD")
+priority = 3
+
+[node name="ToIdle" type="Node" parent="StateMachines/BodyStateMachine/WALKING" index="1" node_paths=PackedStringArray("target_state")]
+script = ExtResource("8_r0it3")
+target_state = NodePath("../../IDLE")
+
+[node name="DEAD" type="Node" parent="StateMachines/BodyStateMachine" index="2" node_paths=PackedStringArray("character", "animationPlayer")]
+script = ExtResource("9_q6j5m")
+character = NodePath("../../..")
+animationPlayer = NodePath("../../../Animation/BodyAnimation")
+
+[node name="BodyAnimation" type="AnimationPlayer" parent="Animation" index="0"]
+root_node = NodePath("../../Character")
+libraries = {
+"": ExtResource("3_smofr")
+}
 
 [node name="Weapon" parent="." index="2" instance=ExtResource("4_lhbmd")]
+z_index = 1
 position = Vector2(-8, 1)
 rotation = -0.273674
 
@@ -112,8 +164,11 @@ libraries = {
 "": SubResource("AnimationLibrary_rlt4n")
 }
 
-[node name="Navigation" parent="." index="3"]
-visible = true
+[node name="Character" parent="." index="4"]
+texture = ExtResource("2_xiynl")
 
-[node name="HitBox" parent="." index="5"]
+[node name="HitBox" parent="." index="6"]
 visible = false
+
+[node name="Navigation" parent="." index="7"]
+visible = true
