@@ -394,24 +394,18 @@ position = Vector2(-494, 110)
 
 [node name="Rat" parent="." instance=ExtResource("8_fc275")]
 position = Vector2(-241, 235)
-movement_speed = 75.0
 
 [node name="Rat2" parent="." instance=ExtResource("8_fc275")]
 position = Vector2(-91, 235)
-movement_speed = 75.0
 
 [node name="Rat3" parent="." instance=ExtResource("8_fc275")]
 position = Vector2(79, 235)
-movement_speed = 75.0
 
 [node name="Rat4" parent="." instance=ExtResource("8_fc275")]
 position = Vector2(-263, -271)
-movement_speed = 75.0
 
 [node name="Rat5" parent="." instance=ExtResource("8_fc275")]
 position = Vector2(-76, -268)
-movement_speed = 75.0
 
 [node name="Rat6" parent="." instance=ExtResource("8_fc275")]
 position = Vector2(108, -268)
-movement_speed = 75.0

@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Characters/Enemies/Rat/StateMachines/Body/StateDead.gd" id="8_3s8fl"]
 
 [node name="Rat" instance=ExtResource("1_ny6p2")]
+movement_speed = 80.0
 
 [node name="BodyStateMachine" type="Node" parent="StateMachines" index="0" node_paths=PackedStringArray("character", "animationPlayer", "initial_state")]
 script = ExtResource("2_j565b")
