@@ -1,35 +1,16 @@
-extends Area2D
+class_name Weapon
+extends Node
 
-@export var damage: int
-@export var projectile_speed: int
-@export var projectile: PackedScene
-var animState = "stop"
+@export var display_name: String = self.name
+
+@export var icon: Sprite2D
+#@export var sprite: Sprite2D
+@export var animation_player: AnimationPlayer
+@export var projectile: Projectile
+@export var player: EntityPlayer
+
+@export var damage: float = 1.0
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$weapon/button_sprite/button.play(animState)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func attack() -> void:
 	pass
-
-func showStats():
-	print("dmg = " + str(damage) + " speed = " + str(projectile_speed)+ " ") 
-
-
-func _on_body_entered(body):
-	if body.name == "Player":
-		animState = "button"
-		$weapon/button_sprite/button.play(animState)
-
-
-func _on_body_exited(body):
-	if body.name == "Player":
-		animState = "stop"
-		$weapon/button_sprite/button.play(animState)
-
-func getDamage():
-	return damage
-
