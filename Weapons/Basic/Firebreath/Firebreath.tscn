@@ -17,6 +17,6 @@ texture = ExtResource("2_66ew5")
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="Projectile" parent="." instance=ExtResource("3_csvup")]
-visible = false
+scale = Vector2(2, 2)
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
