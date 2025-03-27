@@ -1,31 +1,31 @@
 [gd_scene load_steps=35 format=3 uid="uid://bu172clhhjfrv"]
 
-[ext_resource type="Script" path="res://Characters/Player/EntityPlayer.gd" id="1_mdg8t"]
-[ext_resource type="Script" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="2_jsp3y"]
+[ext_resource type="Script" uid="uid://ne6fgbif3nal" path="res://Characters/Player/EntityPlayer.gd" id="1_mdg8t"]
+[ext_resource type="Script" uid="uid://bdw5cx2lw0qdq" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="2_jsp3y"]
 [ext_resource type="Texture2D" uid="uid://1nmtlk8i6nse" path="res://Characters/Player/Red mage.png" id="2_mptqa"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/StateIdle.gd" id="3_epdu2"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleToWalking.gd" id="4_6x8i1"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/StateWalking.gd" id="4_7jkui"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleToDead.gd" id="4_aadh5"]
+[ext_resource type="Script" uid="uid://qcfe5vfjibx2" path="res://Characters/Player/StateMachines/Body/StateIdle.gd" id="3_epdu2"]
+[ext_resource type="Script" uid="uid://bq3lx16ukbit5" path="res://Characters/Player/StateMachines/Body/RuleToWalking.gd" id="4_6x8i1"]
+[ext_resource type="Script" uid="uid://ccet7ux8xpoxd" path="res://Characters/Player/StateMachines/Body/StateWalking.gd" id="4_7jkui"]
+[ext_resource type="Script" uid="uid://7iqwml3toten" path="res://Characters/Player/StateMachines/Body/RuleToDead.gd" id="4_aadh5"]
 [ext_resource type="Texture2D" uid="uid://1wpv4t78f16l" path="res://Characters/Player/Hands.png" id="4_uqh1q"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleToDodging.gd" id="5_22cm5"]
+[ext_resource type="Script" uid="uid://25jx7762t8vf" path="res://Characters/Player/StateMachines/Body/RuleToDodging.gd" id="5_22cm5"]
 [ext_resource type="AnimationLibrary" uid="uid://dag2q0mfsaho0" path="res://Characters/Player/BodyAnimationLib.res" id="5_rjesq"]
 [ext_resource type="AnimationLibrary" uid="uid://8goc0vvs6fj6" path="res://Characters/Player/InvulnerabilityAnimationLib.res" id="6_0t768"]
 [ext_resource type="PackedScene" uid="uid://scm5ocupjncd" path="res://UI/UserInterface.tscn" id="6_cnykm"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleToIdle.gd" id="6_tdpdd"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/StateDodging.gd" id="7_d3kft"]
+[ext_resource type="Script" uid="uid://du0vckiipavxt" path="res://Characters/Player/StateMachines/Body/RuleToIdle.gd" id="6_tdpdd"]
+[ext_resource type="Script" uid="uid://boetj0us8qa3y" path="res://Characters/Player/StateMachines/Body/StateDodging.gd" id="7_d3kft"]
 [ext_resource type="AnimationLibrary" uid="uid://xvm7pub6d2e4" path="res://Characters/Player/HandsAnimationLib.res" id="7_ihk8h"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/RuleFromDodging.gd" id="9_matls"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/StateVulnerable.gd" id="10_2sobn"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/RuleToInvulnerable.gd" id="11_f88cb"]
+[ext_resource type="Script" uid="uid://c3ecbbclq4dgc" path="res://Characters/Player/StateMachines/Body/RuleFromDodging.gd" id="9_matls"]
+[ext_resource type="Script" uid="uid://drsy3a1gbfpdx" path="res://Characters/Player/StateMachines/Invulnerability/StateVulnerable.gd" id="10_2sobn"]
+[ext_resource type="Script" uid="uid://ddjmp1qy6klxq" path="res://Characters/Player/StateMachines/Invulnerability/RuleToInvulnerable.gd" id="11_f88cb"]
 [ext_resource type="PackedScene" uid="uid://ni73mxvn10mj" path="res://Weapons/Basic/Firebreath/Firebreath.tscn" id="11_ol4qr"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Body/StateDead.gd" id="11_uq8aq"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/StateInvulnerable.gd" id="12_hfyka"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Invulnerability/RuleToVulnerable.gd" id="13_304mb"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/StatePassive.gd" id="14_ovkyv"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/RuleToAttacking.gd" id="15_1dgtb"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/StateAttacking.gd" id="15_qvoiu"]
-[ext_resource type="Script" path="res://Characters/Player/StateMachines/Hands/RuleToPassive.gd" id="17_oc3cy"]
+[ext_resource type="Script" uid="uid://cr1kv6thbfpn3" path="res://Characters/Player/StateMachines/Body/StateDead.gd" id="11_uq8aq"]
+[ext_resource type="Script" uid="uid://chg7ny1lt85n1" path="res://Characters/Player/StateMachines/Invulnerability/StateInvulnerable.gd" id="12_hfyka"]
+[ext_resource type="Script" uid="uid://cud1n8f2xioy" path="res://Characters/Player/StateMachines/Invulnerability/RuleToVulnerable.gd" id="13_304mb"]
+[ext_resource type="Script" uid="uid://d3603exd4nxyh" path="res://Characters/Player/StateMachines/Hands/StatePassive.gd" id="14_ovkyv"]
+[ext_resource type="Script" uid="uid://c43vk2m0gdbnc" path="res://Characters/Player/StateMachines/Hands/RuleToAttacking.gd" id="15_1dgtb"]
+[ext_resource type="Script" uid="uid://pte77ci27t74" path="res://Characters/Player/StateMachines/Hands/StateAttacking.gd" id="15_qvoiu"]
+[ext_resource type="Script" uid="uid://cinhokgwh037k" path="res://Characters/Player/StateMachines/Hands/RuleToPassive.gd" id="17_oc3cy"]
 
 [sub_resource type="Animation" id="Animation_epsh5"]
 length = 0.001
@@ -68,7 +68,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0846b"]
 _data = {
-"RESET": SubResource("Animation_epsh5")
+&"RESET": SubResource("Animation_epsh5")
 }
 
 [sub_resource type="Animation" id="Animation_ro5ub"]
@@ -88,7 +88,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyrxv"]
 _data = {
-"RESET": SubResource("Animation_ro5ub")
+&"RESET": SubResource("Animation_ro5ub")
 }
 
 [sub_resource type="Animation" id="Animation_ahva6"]
@@ -217,7 +217,7 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lg0vs"]
 _data = {
-"RESET": SubResource("Animation_ahva6")
+&"RESET": SubResource("Animation_ahva6")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_erdxr"]
@@ -357,22 +357,22 @@ target_state = NodePath("../../PASSIVE")
 [node name="BodyAnimation" type="AnimationPlayer" parent="Animation"]
 root_node = NodePath("../../Character")
 libraries = {
-"": SubResource("AnimationLibrary_0846b"),
-"Body": ExtResource("5_rjesq")
+&"": SubResource("AnimationLibrary_0846b"),
+&"Body": ExtResource("5_rjesq")
 }
 
 [node name="InvulnerabilityAnimation" type="AnimationPlayer" parent="Animation"]
 root_node = NodePath("../../Character")
 libraries = {
-"": SubResource("AnimationLibrary_vyrxv"),
-"Invulnerability": ExtResource("6_0t768")
+&"": SubResource("AnimationLibrary_vyrxv"),
+&"Invulnerability": ExtResource("6_0t768")
 }
 
 [node name="HandsAnimation" type="AnimationPlayer" parent="Animation"]
 root_node = NodePath("../../Character")
 libraries = {
-"": SubResource("AnimationLibrary_lg0vs"),
-"Hands": ExtResource("7_ihk8h")
+&"": SubResource("AnimationLibrary_lg0vs"),
+&"Hands": ExtResource("7_ihk8h")
 }
 
 [node name="Timers" type="Node" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b53mu6fxsqo6b"]
 
-[ext_resource type="Script" path="res://Weapons/Projectiles/Firebreath/Firebreath.gd" id="1_tgjvp"]
+[ext_resource type="Script" uid="uid://5k4uhvypa3mn" path="res://Weapons/Projectiles/Firebreath/Firebreath.gd" id="1_tgjvp"]
 [ext_resource type="Texture2D" uid="uid://dm2h047rbn2d8" path="res://Weapons/Projectiles/Firebreath/Firebreath(WIP).png" id="2_3wwh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5tgqx"]

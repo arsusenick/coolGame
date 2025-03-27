@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3vl21q1snnti"]
 
 [ext_resource type="Texture2D" uid="uid://cuyi8u6e1ro75" path="res://Weapons/Projectiles/Bottle.png" id="1_11gco"]
-[ext_resource type="Script" path="res://Weapons/Basic/bottle.gd" id="1_dm6bt"]
+[ext_resource type="Script" uid="uid://qhnt3ehvu7l7" path="res://Weapons/Basic/bottle.gd" id="1_dm6bt"]
 [ext_resource type="PackedScene" uid="uid://dwnf566m3iflb" path="res://Weapons/Projectiles/Bottle.tscn" id="2_fhqo3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_faa8c"]

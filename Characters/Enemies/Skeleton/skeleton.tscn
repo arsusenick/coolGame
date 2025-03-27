@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Characters/Enemies/Enemy.tscn" id="1_10d8c"]
 [ext_resource type="Texture2D" uid="uid://cfqnhlxy6g2q2" path="res://Characters/Enemies/Skeleton/Skeleton.png" id="2_bqr2g"]
-[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/Skeleton.gd" id="2_c5jrs"]
+[ext_resource type="Script" uid="uid://b46g0nd3p22ea" path="res://Characters/Enemies/Skeleton/Skeleton.gd" id="2_c5jrs"]
 [ext_resource type="AnimationLibrary" uid="uid://com23fsh6wuui" path="res://Characters/Enemies/AnimLibTemp.res" id="2_prktj"]
-[ext_resource type="Script" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="3_dlj6l"]
-[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateIdle.gd" id="4_42kmu"]
-[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToDead.gd" id="5_5yt4x"]
-[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToWalking.gd" id="6_c03dl"]
-[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateWalking.gd" id="7_s1dmk"]
-[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToIdle.gd" id="8_e7gcm"]
-[ext_resource type="Script" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateDead.gd" id="9_3se11"]
+[ext_resource type="Script" uid="uid://bdw5cx2lw0qdq" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="3_dlj6l"]
+[ext_resource type="Script" uid="uid://b4al0owhorfrw" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateIdle.gd" id="4_42kmu"]
+[ext_resource type="Script" uid="uid://bdtnvrra6uufg" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToDead.gd" id="5_5yt4x"]
+[ext_resource type="Script" uid="uid://dcvss4maotis2" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToWalking.gd" id="6_c03dl"]
+[ext_resource type="Script" uid="uid://bl16ejly1634f" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateWalking.gd" id="7_s1dmk"]
+[ext_resource type="Script" uid="uid://c5ipt0ngdtd22" path="res://Characters/Enemies/Skeleton/StateMachines/Body/RuleToIdle.gd" id="8_e7gcm"]
+[ext_resource type="Script" uid="uid://cij7x6ydyy2qx" path="res://Characters/Enemies/Skeleton/StateMachines/Body/StateDead.gd" id="9_3se11"]
 
 [node name="Skeleton" instance=ExtResource("1_10d8c")]
 script = ExtResource("2_c5jrs")
@@ -58,7 +58,7 @@ animationPlayer = NodePath("../../../Animation/BodyAnimation")
 [node name="BodyAnimation" type="AnimationPlayer" parent="Animation" index="0"]
 root_node = NodePath("../../Character")
 libraries = {
-"": ExtResource("2_prktj")
+&"": ExtResource("2_prktj")
 }
 
 [node name="Character" parent="." index="3"]

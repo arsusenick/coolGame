@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcmiewiljmho"]
 
 [ext_resource type="PackedScene" uid="uid://scm5ocupjncd" path="res://UI/UserInterface.tscn" id="1_ca7y4"]
-[ext_resource type="Script" path="res://Game.gd" id="1_iscg5"]
-[ext_resource type="Script" path="res://Rooms.gd" id="3_441xx"]
+[ext_resource type="Script" uid="uid://b2wrik3vx2q67" path="res://Game.gd" id="1_iscg5"]
+[ext_resource type="Script" uid="uid://c63t77h1bxorr" path="res://Rooms.gd" id="3_441xx"]
 [ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Characters/Player/Player.tscn" id="4_le562"]
 
 [node name="Game" type="Node2D"]

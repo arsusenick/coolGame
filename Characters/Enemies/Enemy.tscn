@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://shjqvn85bxuk"]
 
-[ext_resource type="Script" path="res://Characters/Enemies/EntityMob.gd" id="1_335ko"]
+[ext_resource type="Script" uid="uid://c4u5ud8me2rfc" path="res://Characters/Enemies/EntityMob.gd" id="1_335ko"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_savth"]
 radius = 6.06709

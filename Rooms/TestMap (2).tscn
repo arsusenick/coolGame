@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://bded2na08sjr7" path="res://Rooms/Ghetto.png" id="1_s6x7p"]
 [ext_resource type="PackedScene" uid="uid://bu172clhhjfrv" path="res://Characters/Player/Player.tscn" id="2_lwdhy"]
-[ext_resource type="Script" path="res://Weapons/BulletManager (2).gd" id="3_qr0yo"]
-[ext_resource type="PackedScene" uid="uid://bmwp5mrqqynno" path="res://Characters/Enemies/Skeleton/Skeleton.tscn" id="4_fkkr4"]
-[ext_resource type="Script" path="res://Weapons/WeaponManager.gd" id="5_5ht64"]
+[ext_resource type="Script" uid="uid://0sdmmu8je63q" path="res://Weapons/BulletManager (2).gd" id="3_qr0yo"]
+[ext_resource type="PackedScene" uid="uid://bmwp5mrqqynno" path="res://Characters/Enemies/Skeleton/skeleton.tscn" id="4_fkkr4"]
+[ext_resource type="Script" uid="uid://tw72xqmdt3gw" path="res://Weapons/WeaponManager.gd" id="5_5ht64"]
 [ext_resource type="PackedScene" uid="uid://pdunxfv75djd" path="res://Weapons/Basic/pistol.tscn" id="6_r5nnt"]
 [ext_resource type="PackedScene" uid="uid://scm5ocupjncd" path="res://UI/UserInterface.tscn" id="7_56n0c"]
-[ext_resource type="Script" path="res://Rooms/tileMinimap.gd" id="8_qtk7g"]
+[ext_resource type="Script" uid="uid://b4dcffv4f4guo" path="res://Rooms/tileMinimap.gd" id="8_qtk7g"]
 [ext_resource type="Texture2D" uid="uid://cv1uoije2vid8" path="res://UI/MinimapMarker.png" id="9_ieb1h"]
 [ext_resource type="PackedScene" uid="uid://sw6b1b7qbg1j" path="res://Weapons/turret.tscn" id="10_q51nw"]
 

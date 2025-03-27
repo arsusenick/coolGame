@@ -1,17 +1,17 @@
 [gd_scene load_steps=17 format=3 uid="uid://bcsu46jn18v84"]
 
 [ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Characters/Enemies/Enemy.tscn" id="1_ffalr"]
-[ext_resource type="Script" path="res://Characters/Enemies/Hobo/Hobo.gd" id="2_ijmwo"]
+[ext_resource type="Script" uid="uid://dknw6jtm6rgs0" path="res://Characters/Enemies/Hobo/Hobo.gd" id="2_ijmwo"]
 [ext_resource type="Texture2D" uid="uid://o0ctk7gg10to" path="res://Characters/Enemies/Hobo/Hobo.png" id="2_xiynl"]
-[ext_resource type="Script" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="3_7o4xr"]
+[ext_resource type="Script" uid="uid://bdw5cx2lw0qdq" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="3_7o4xr"]
 [ext_resource type="AnimationLibrary" uid="uid://com23fsh6wuui" path="res://Characters/Enemies/AnimLibTemp.res" id="3_smofr"]
-[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateIdle.gd" id="4_hryyu"]
+[ext_resource type="Script" uid="uid://d3hxe5yhgoxcq" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateIdle.gd" id="4_hryyu"]
 [ext_resource type="PackedScene" uid="uid://b3vl21q1snnti" path="res://Weapons/Basic/Bottle.tscn" id="4_lhbmd"]
-[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToDead.gd" id="5_oul5n"]
-[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToWalking.gd" id="6_k0o83"]
-[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateWalking.gd" id="7_rv8b2"]
-[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToIdle.gd" id="8_r0it3"]
-[ext_resource type="Script" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateDead.gd" id="9_q6j5m"]
+[ext_resource type="Script" uid="uid://3vrjg7refbhk" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToDead.gd" id="5_oul5n"]
+[ext_resource type="Script" uid="uid://bel5m5uae3ayh" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToWalking.gd" id="6_k0o83"]
+[ext_resource type="Script" uid="uid://bewy6ykt5f0uf" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateWalking.gd" id="7_rv8b2"]
+[ext_resource type="Script" uid="uid://bmnbogxosogxy" path="res://Characters/Enemies/Hobo/StateMachines/Body/RuleToIdle.gd" id="8_r0it3"]
+[ext_resource type="Script" uid="uid://dvok8bdrjl0vf" path="res://Characters/Enemies/Hobo/StateMachines/Body/StateDead.gd" id="9_q6j5m"]
 
 [sub_resource type="Animation" id="Animation_6kytn"]
 length = 0.001
@@ -100,9 +100,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rlt4n"]
 _data = {
-"RESET": SubResource("Animation_6kytn"),
-"shoot": SubResource("Animation_g23c7"),
-"shoot_recovery": SubResource("Animation_k45ye")
+&"RESET": SubResource("Animation_6kytn"),
+&"shoot": SubResource("Animation_g23c7"),
+&"shoot_recovery": SubResource("Animation_k45ye")
 }
 
 [node name="Hobo" instance=ExtResource("1_ffalr")]

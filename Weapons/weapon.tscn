@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bh6nn2w1pkl0x"]
 
-[ext_resource type="Script" path="res://Weapons/weapon(DEPRECATED).gd" id="1_sg688"]
+[ext_resource type="Script" uid="uid://c8k53txx0tqe0" path="res://Weapons/weapon(DEPRECATED).gd" id="1_sg688"]
 [ext_resource type="Texture2D" uid="uid://bje72we35gnua" path="res://UI/buttons.png" id="2_5mjc4"]
 
 [sub_resource type="Animation" id="Animation_o21rl"]
@@ -129,10 +129,10 @@ resource_name = "weapon"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gwfaf"]
 _data = {
-"RESET": SubResource("Animation_o21rl"),
-"button": SubResource("Animation_fg0t5"),
-"stop": SubResource("Animation_yc0ca"),
-"weapon": SubResource("Animation_hh87p")
+&"RESET": SubResource("Animation_o21rl"),
+&"button": SubResource("Animation_fg0t5"),
+&"stop": SubResource("Animation_yc0ca"),
+&"weapon": SubResource("Animation_hh87p")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sw1ur"]

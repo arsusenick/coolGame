@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://scm5ocupjncd"]
 
-[ext_resource type="Script" path="res://UI/UserInterface.gd" id="1_62fx5"]
+[ext_resource type="Script" uid="uid://bo7fn6wq2xdhd" path="res://UI/UserInterface.gd" id="1_62fx5"]
 [ext_resource type="Texture2D" uid="uid://uqgdwhdd6htx" path="res://UI/Health.png" id="1_svrrq"]
 [ext_resource type="Texture2D" uid="uid://ex36pojw5sxd" path="res://UI/WeaponSlot.png" id="2_tch34"]
 [ext_resource type="Texture2D" uid="uid://f4ta0fveg4ha" path="res://UI/SpecialSlot.png" id="3_m4f4h"]
