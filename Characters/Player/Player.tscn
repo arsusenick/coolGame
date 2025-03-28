@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bu172clhhjfrv"]
+[gd_scene load_steps=34 format=3 uid="uid://bu172clhhjfrv"]
 
 [ext_resource type="Script" uid="uid://ne6fgbif3nal" path="res://Characters/Player/EntityPlayer.gd" id="1_mdg8t"]
 [ext_resource type="Script" uid="uid://bdw5cx2lw0qdq" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="2_jsp3y"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://25jx7762t8vf" path="res://Characters/Player/StateMachines/Body/RuleToDodging.gd" id="5_22cm5"]
 [ext_resource type="AnimationLibrary" uid="uid://dag2q0mfsaho0" path="res://Characters/Player/BodyAnimationLib.res" id="5_rjesq"]
 [ext_resource type="AnimationLibrary" uid="uid://8goc0vvs6fj6" path="res://Characters/Player/InvulnerabilityAnimationLib.res" id="6_0t768"]
-[ext_resource type="PackedScene" uid="uid://scm5ocupjncd" path="res://UI/UserInterface.tscn" id="6_cnykm"]
 [ext_resource type="Script" uid="uid://du0vckiipavxt" path="res://Characters/Player/StateMachines/Body/RuleToIdle.gd" id="6_tdpdd"]
 [ext_resource type="Script" uid="uid://boetj0us8qa3y" path="res://Characters/Player/StateMachines/Body/StateDodging.gd" id="7_d3kft"]
 [ext_resource type="AnimationLibrary" uid="uid://xvm7pub6d2e4" path="res://Characters/Player/HandsAnimationLib.res" id="7_ihk8h"]
@@ -432,8 +431,6 @@ debug_color = Color(0.883355, 0.000325556, 0.813666, 0.42)
 player = NodePath("../../..")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="UserInterface" parent="." instance=ExtResource("6_cnykm")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

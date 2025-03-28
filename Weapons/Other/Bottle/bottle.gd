@@ -12,14 +12,14 @@ func _process(delta: float) -> void:
 	pass
 
 # Shoots projectile
-func shoot(direction: Vector2) -> void:
+func shoot(angle: float) -> void:
 	var animationPlayer = get_node_or_null("AnimationPlayer")
 	if animationPlayer:
 		$AnimationPlayer.play("shoot")
 	var current_proj:Node2D = projectile.instantiate()
 	current_proj.position = self.position
 	current_proj.visible = true
-	current_proj.move_direction = direction.normalized()
+	current_proj.rotation = angle
 	get_parent().add_child(current_proj)
 	if animationPlayer:
 		$AnimationPlayer.play("shoot_recovery")

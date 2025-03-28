@@ -15,6 +15,7 @@ func _ready() -> void:
 	projectile_animation = projectile.animation_player
 	projectile.visible = false
 
+
 func _physics_process(_delta: float) -> void:
 	if !is_active:
 		return

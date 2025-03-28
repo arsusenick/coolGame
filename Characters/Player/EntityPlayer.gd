@@ -19,9 +19,11 @@ var items: Array[Item] = []
 @export var basic_weapon: WeaponBasic # testing
 
 signal signs_changed(new_signs: Array[GlobalData.SIGNS])
+signal basic_weapon_changed(new_weapon: WeaponBasic)
 
 func _ready() -> void:
-	pass
+	if basic_weapon:
+		basic_weapon_changed.emit(basic_weapon) # testing
 
 
 func _process(_delta: float) -> void:

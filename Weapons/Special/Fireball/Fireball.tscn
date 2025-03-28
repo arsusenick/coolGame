@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5motob0s7m2k"]
+
+[ext_resource type="Script" uid="uid://bfwhtj2mpgngh" path="res://Weapons/Special/WeaponSpecial.gd" id="1_nv577"]
+
+[node name="Fireball" type="Node"]
+script = ExtResource("1_nv577")
+metadata/_custom_type_script = "uid://bfwhtj2mpgngh"

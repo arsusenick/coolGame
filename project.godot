@@ -36,6 +36,19 @@ project/assembly_name="SWMG Project"
 
 movie_writer/movie_file="C:/.Study/ГПО/Project/coolGame/Movies/aboba.avi"
 
+[file_customization]
+
+folder_colors={
+"res://Characters/": "orange",
+"res://Fakes/": "pink",
+"res://Items/": "purple",
+"res://Rooms/": "blue",
+"res://SFX/": "yellow",
+"res://UI/": "green",
+"res://Weapons/": "red",
+"res://script_templates/": "gray"
+}
+
 [input]
 
 controls_up={

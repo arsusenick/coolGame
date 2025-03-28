@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwnf566m3iflb"]
 
-[ext_resource type="Texture2D" uid="uid://cuyi8u6e1ro75" path="res://Weapons/Projectiles/Bottle.png" id="1_qyhpn"]
-[ext_resource type="Script" uid="uid://dcaky1stp4ed0" path="res://Weapons/Projectiles/bottle.gd" id="1_uap3l"]
+[ext_resource type="Texture2D" uid="uid://cuyi8u6e1ro75" path="res://Weapons/Projectiles/Bottle/Bottle.png" id="1_qyhpn"]
+[ext_resource type="Script" uid="uid://dcaky1stp4ed0" path="res://Weapons/Projectiles/Bottle/bottle.gd" id="1_uap3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jec3i"]
 radius = 5.0
