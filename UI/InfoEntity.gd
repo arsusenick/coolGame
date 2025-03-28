@@ -1,25 +1,43 @@
 class_name InfoEntity
 extends Control
 
-@export var entity:Entity
+@export var player:EntityPlayer
 
-@onready var label = $RichTextLabel
+@export_category("Show")
+@export var show_hp: bool = true
+@export var show_body_state: bool = true
+@export var show_invulnerability_state: bool = true
+@export var show_hands_state: bool = true
+@export var show_signs: bool = true
+
+@onready var label: RichTextLabel = $RichTextLabel
 
 var hp: String = ""
 var body_state: String = ""
 var invulnerability_state: String = ""
 var hands_state: String = ""
-
+var signs: Array[GlobalData.SIGNS] = []
 func _ready() -> void:
-	entity.damage_taken.connect(update_hp)
-	entity.body_state_machine.state_changed.connect(update_body_state)
-	entity.invulnerability_state_machine.state_changed.connect(update_invulnerability_state)
-	entity.hands_state_machine.state_changed.connect(update_hands_state)
+	if show_hp:
+		player.damage_taken.connect(update_hp)
+		hp = str(player.max_hp)
 	
-	hp = str(entity.max_hp)
-	body_state = entity.body_state_machine.current_state.name
-	invulnerability_state = entity.invulnerability_state_machine.current_state.name
-	hands_state = entity.hands_state_machine.current_state.name
+	if show_body_state:
+		player.body_state_machine.state_changed.connect(update_body_state)
+		body_state = player.body_state_machine.current_state.name
+	
+	if show_invulnerability_state:
+		player.invulnerability_state_machine.state_changed.connect(update_invulnerability_state)
+		invulnerability_state = player.invulnerability_state_machine.current_state.name
+	
+	if show_hands_state:
+		player.hands_state_machine.state_changed.connect(update_hands_state)
+		hands_state = player.hands_state_machine.current_state.name
+	
+	if show_signs:
+		player.signs_changed.connect(update_signs)
+		signs = player.signs
+	
 	update_text()
 
 
@@ -29,16 +47,30 @@ func _physics_process(_delta: float) -> void:
 
 func update_text() -> void:
 	var text: String = ""
-	text += "HP: " + hp
-	text +=  "\nBody: " + body_state
-	text +=  "\nInvul: " + invulnerability_state
-	text +=  "\nHands: " + hands_state
+	
+	if show_hp:
+		text += "HP: " + hp
+	
+	if show_body_state:
+		text +=  "\nBody: " + body_state
+	
+	if show_invulnerability_state:
+		text +=  "\nInvul: " + invulnerability_state
+	
+	if show_hands_state:
+		text +=  "\nHands: " + hands_state
+	
+	if show_signs:
+		text +=  "\nSigns: "
+		for sign in signs:
+			text +=  str(sign) + " "
+	
 	label.clear()
 	label.append_text(text)
 
 
 func update_hp(_damage: float) -> void:
-	hp = str(entity.hp)
+	hp = str(player.hp)
 	update_text()
 
 
@@ -54,4 +86,9 @@ func update_invulnerability_state(new_state: State) -> void:
 
 func update_hands_state(new_state: State) -> void:
 	hands_state = new_state.name
+	update_text()
+
+
+func update_signs(new_signs: Array[GlobalData.SIGNS]) -> void:
+	signs = new_signs
 	update_text()

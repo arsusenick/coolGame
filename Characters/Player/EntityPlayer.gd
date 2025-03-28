@@ -18,6 +18,7 @@ var special_weapons: Array[WeaponSpecial] = []
 var items: Array[Item] = []
 @export var basic_weapon: WeaponBasic # testing
 
+signal signs_changed(new_signs: Array[GlobalData.SIGNS])
 
 func _ready() -> void:
 	pass
@@ -85,10 +86,12 @@ func handle_basic_attack() -> void:
 
 func handle_sign(new_sign: GlobalData.SIGNS) -> void:
 	signs.append(new_sign)
+	signs_changed.emit(signs)
 	print("Sign " + str(new_sign))
 	if signs.size() == 3:
 		print("Got 3 signs: %s %s %s. Clearing..." % signs)
 		signs.clear()
+	
 
 
 # :Entity.

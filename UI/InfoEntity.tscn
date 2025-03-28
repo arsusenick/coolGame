@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://biplxjdfwm8hm" path="res://UI/InfoEntity.gd" id="1_15bsi"]
 
-[node name="InfoEntity" type="Control"]
+[node name="InfoPlayer" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 20.0

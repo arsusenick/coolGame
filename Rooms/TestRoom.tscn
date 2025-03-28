@@ -337,43 +337,39 @@ visible = false
 navigation_polygon = SubResource("NavigationPolygon_ba8r4")
 
 [node name="Player" parent="." instance=ExtResource("2_eif7t")]
-z_index = 1
 position = Vector2(-39, -1)
 
-[node name="InfoEntity" parent="Player" node_paths=PackedStringArray("entity") instance=ExtResource("5_6to27")]
+[node name="InfoPlayer" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("5_6to27")]
 offset_left = -64.0
 offset_top = 35.0
 offset_right = -44.0
 offset_bottom = 55.0
-entity = NodePath("..")
+player = NodePath("..")
+show_body_state = false
+show_invulnerability_state = false
+show_signs = false
 
 [node name="Hobo" parent="." instance=ExtResource("3_0k34h")]
-z_index = 1
 position = Vector2(242, -192)
 movement_speed = 30.0
 
 [node name="Hobo2" parent="." instance=ExtResource("3_0k34h")]
-z_index = 1
 position = Vector2(416, -10)
 movement_speed = 30.0
 
 [node name="Hobo3" parent="." instance=ExtResource("3_0k34h")]
-z_index = 1
 position = Vector2(540, -192)
 movement_speed = 30.0
 
 [node name="Hobo4" parent="." instance=ExtResource("3_0k34h")]
-z_index = 1
 position = Vector2(695, -11)
 movement_speed = 30.0
 
 [node name="Hobo5" parent="." instance=ExtResource("3_0k34h")]
-z_index = 1
 position = Vector2(543, 210)
 movement_speed = 30.0
 
 [node name="Hobo6" parent="." instance=ExtResource("3_0k34h")]
-z_index = 1
 position = Vector2(237, 212)
 movement_speed = 30.0
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bcsu46jn18v84"]
 
 [ext_resource type="PackedScene" uid="uid://shjqvn85bxuk" path="res://Characters/Enemies/Enemy.tscn" id="1_ffalr"]
-[ext_resource type="Script" uid="uid://dknw6jtm6rgs0" path="res://Characters/Enemies/Hobo/Hobo.gd" id="2_ijmwo"]
+[ext_resource type="Script" uid="uid://dknw6jtm6rgs0" path="res://Characters/Enemies/Hobo/hobo.gd" id="2_ijmwo"]
 [ext_resource type="Texture2D" uid="uid://o0ctk7gg10to" path="res://Characters/Enemies/Hobo/Hobo.png" id="2_xiynl"]
 [ext_resource type="Script" uid="uid://bdw5cx2lw0qdq" path="res://Characters/StateMachineBase/FiniteStateMachine.gd" id="3_7o4xr"]
 [ext_resource type="AnimationLibrary" uid="uid://com23fsh6wuui" path="res://Characters/Enemies/AnimLibTemp.res" id="3_smofr"]
@@ -151,7 +151,7 @@ animationPlayer = NodePath("../../../Animation/BodyAnimation")
 [node name="BodyAnimation" type="AnimationPlayer" parent="Animation" index="0"]
 root_node = NodePath("../../Character")
 libraries = {
-"": ExtResource("3_smofr")
+&"": ExtResource("3_smofr")
 }
 
 [node name="Weapon" parent="." index="2" instance=ExtResource("4_lhbmd")]
@@ -161,14 +161,11 @@ rotation = -0.273674
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon" index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_rlt4n")
+&"": SubResource("AnimationLibrary_rlt4n")
 }
 
 [node name="Character" parent="." index="4"]
 texture = ExtResource("2_xiynl")
-
-[node name="HitBox" parent="." index="6"]
-visible = false
 
 [node name="Navigation" parent="." index="7"]
 visible = true

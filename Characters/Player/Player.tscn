@@ -228,6 +228,7 @@ height = 14.0
 radius = 14.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("body_state_machine", "invulnerability_state_machine", "hands_state_machine", "invulnerability_timer", "basic_weapon", "sprite")]
+z_index = 1
 collision_layer = 2
 collision_mask = 35
 script = ExtResource("1_mdg8t")
