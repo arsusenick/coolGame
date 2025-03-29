@@ -62,7 +62,6 @@ libraries = {
 
 [node name="Character" parent="." index="3"]
 texture = ExtResource("3_si6jf")
-frame = 2
 
 [node name="Navigation" parent="." index="6"]
 visible = true

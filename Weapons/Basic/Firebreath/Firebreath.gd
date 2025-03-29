@@ -8,12 +8,17 @@ extends WeaponBasic
 var is_active: bool = false
 var can_attack: bool = true
 
+var projectile_instance: Projectile
 var projectile_animation: AnimationPlayer
 
 func _ready() -> void:
 	attack_timer.one_shot = true
-	projectile_animation = projectile.animation_player
-	projectile.visible = false
+	projectile_instance = projectile.instantiate()
+	projectile_animation = projectile_instance.animation_player
+	projectile_instance.scale = Vector2(2, 2)
+	projectile_instance.visible = false
+
+	add_child(projectile_instance)
 
 
 func _physics_process(_delta: float) -> void:
@@ -21,17 +26,17 @@ func _physics_process(_delta: float) -> void:
 		return
 	
 	# Обновляем позицию и поворот огня относительно игрока
-	projectile.position = player.facing_direction * 24  # Увеличил отступ
-	projectile.rotation = player.facing_direction.angle() + PI/2
+	projectile_instance.position = player.facing_direction * 24  # Увеличил отступ
+	projectile_instance.rotation = player.facing_direction.angle() + PI/2
 
 
-func attack() -> void:
+func attack(_from: Vector2, _to: Vector2) -> void:
 	if !can_attack:
 		return
 		
 	if !is_active:
 		# Начинаем атаку
-		projectile.visible = true
+		projectile_instance.visible = true
 		is_active = true
 		if projectile_animation.has_animation("start"):
 			projectile_animation.play("start")
@@ -48,7 +53,6 @@ func stop_attack() -> void:
 		return
 		
 	is_active = false
-	# projectile.visible = false
 	can_attack = false
 	attack_timer.start(cooldown)
 	if projectile_animation.has_animation("end"):
